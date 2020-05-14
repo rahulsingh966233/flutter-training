@@ -14,6 +14,10 @@ class RandomWordState extends State<RandomWords> {
       // header setup
       appBar: AppBar(
         title: Text('Startup Name Generator'),
+        actions: <Widget>[
+          // Add 3 lines from here...
+          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       // funtion calling
       body: _buildSuggestions(),
@@ -22,7 +26,7 @@ class RandomWordState extends State<RandomWords> {
 
   // variable declaration
   final List<WordPair> _suggestions = <WordPair>[];
-  final TextStyle _bigFont = const TextStyle(fontSize: 18);
+  final TextStyle _bigFont = const TextStyle(fontSize: 18,color: Colors.deepOrange);
   final Set<WordPair> _saved = Set<WordPair>();
 
   Widget _buildSuggestions() {
@@ -78,6 +82,36 @@ class RandomWordState extends State<RandomWords> {
       },
     );
   }
+
+  void _pushSaved() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          final Iterable<ListTile> tiles = _saved.map(
+            (WordPair pair) {
+              return ListTile(
+                title: Text(
+                  pair.asPascalCase,
+                  style: _bigFont,
+                ),
+              );
+            },
+          );
+          final List<Widget> divided = ListTile.divideTiles(
+            context: context,
+            tiles: tiles,
+          ).toList();
+          return Scaffold(
+            // Add 6 lines from here...
+            appBar: AppBar(
+              title: Text('Saved Suggestions'),
+            ),
+            body: ListView(children: divided),
+          );
+        },
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -85,6 +119,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'StartUp Name Genrator',
+      theme: ThemeData(          // Add the 3 lines from here... 
+        primaryColor: Colors.green,
+      ), 
       home: RandomWords(),
     );
   }
