@@ -28,7 +28,10 @@ class DicePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Image.asset('images/dice2.png'),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset('images/dice2.png'),
+            ),
           ),
         ],
       ),
