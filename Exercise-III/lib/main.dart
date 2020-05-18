@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
             child:Column(children: <Widget>[
               CircleAvatar(
                 radius: 50.0,
-                backgroundImage: AssetImage('images/icon.png'),
+                backgroundImage: AssetImage('images/download.png'),
               ),
               Text(
                 'Shubhangi Ambade',
@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold
               ),
               ),
-              Text("FLUTTER DEVELOPER",style: TextStyle(
+              Text("FLUTTER DEVELOPER",
+              style: TextStyle(
                 fontFamily: 'Source Sans Pro',
                 color: Colors.teal.shade100,
                 fontSize: 20.0,
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
                 margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
                 child: ListTile(
                   leading:Icon(Icons.email,color: Colors.white,) ,
-                  title: Text('abc@gmail.com', style: TextStyle(
+                  title: Text('shubh6897@gmail.com', style: TextStyle(
                     color: Colors.teal.shade900,
                     fontSize: 20.0,
                     fontFamily: 'Source Sans Pro',
