@@ -49,6 +49,18 @@ class MyApp extends StatelessWidget {
                   ),),
                 )
               ),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child: ListTile(
+                  leading:Icon(Icons.email,color: Colors.white,) ,
+                  title: Text('abc@gmail.com', style: TextStyle(
+                    color: Colors.teal.shade900,
+                    fontSize: 20.0,
+                    fontFamily: 'Source Sans Pro',
+                  ),),
+                )
+              )
             ],),
       ),
       ),
