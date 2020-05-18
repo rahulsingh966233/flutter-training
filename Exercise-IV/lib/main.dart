@@ -23,7 +23,9 @@ class DicePage extends StatelessWidget {
         Expanded(
           child: Image.asset('images/dice1.png'),
         ),
-        
+        Expanded(
+          child: Image.asset('images/dice1.png'),
+        ),
       ],
     );
   }
