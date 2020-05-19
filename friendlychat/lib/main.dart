@@ -21,9 +21,30 @@ class FriendlyChatApp extends StatelessWidget {
 }
 
 class ChatMessage extends StatelessWidget {
+  ChatMessage({this.text});     // NEW
+  final String text;  
+  String _name = 'Shubhangi';
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: Row(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(child: Text(_name[0])),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(_name, style: Theme.of(context).textTheme.headline4),
+              Container(
+                child: Text(text),
+                margin: EdgeInsets.only(top: 5.0),
+              )
+            ],
+          )
+        ],
+      ),
       margin: EdgeInsets.symmetric(vertical: 10.0),
     );
   }
