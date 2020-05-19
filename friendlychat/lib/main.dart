@@ -28,6 +28,10 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final _textController = TextEditingController();
 
+  void _handleSubmitted(String text) {
+    _textController.clear();
+  }
+
   Widget _buildTextComposer(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 8.0),
