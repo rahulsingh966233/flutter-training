@@ -82,6 +82,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final List<ChatMessage> _messages = [];
   final _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
+  // a private variable that is true whenever the user types in the input field
   bool _isComposing = false;
 
   void _handleSubmitted(String text) {
@@ -122,6 +123,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 4.0),
+              // check plateform os
               child: Theme.of(context).platform == TargetPlatform.iOS
                   ? CupertinoButton(
                       child: Text('Send'),
@@ -147,6 +149,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text('FriendlyChat'),
+        // defines the z-coordinates of the AppBar. A z-coordinate value of 0.0 has no shadow (iOS) and a value of 4.0 has a defined shadow (Android)
         elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
       ),
       body: Container(
@@ -167,6 +170,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             )
           ],
         ),
+        // border add
         decoration: Theme.of(context).platform == TargetPlatform.iOS
             ? BoxDecoration(
                 border: Border(
