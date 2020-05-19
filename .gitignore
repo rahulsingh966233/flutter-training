@@ -29,6 +29,9 @@
 .pub-cache/
 .pub/
 /build/
+/Exercise-IV/build
+/Exercise-I/build
+/Exercise-III/build
 
 # Web related
 lib/generated_plugin_registrant.dart
