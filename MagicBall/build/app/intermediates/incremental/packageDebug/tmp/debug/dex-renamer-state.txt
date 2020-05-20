@@ -1,0 +1,4 @@
+#Wed May 20 19:46:48 IST 2020
+base.0=/home/codecrunch/Dropbox/codelab_practical/MagicBall/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
