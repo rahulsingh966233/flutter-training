@@ -11,6 +11,7 @@ class BallPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[400],
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
         title: Text('Ask Me Anything'),
@@ -33,7 +34,7 @@ class _BallState extends State<Ball> {
       ballNumber = number;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
