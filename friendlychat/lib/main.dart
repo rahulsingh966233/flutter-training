@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
 void main() {
   runApp(
@@ -9,18 +9,23 @@ void main() {
 }
 
 final ThemeData kIOSTheme = ThemeData(
-    primarySwatch: Colors.orange,
-    primaryColor: Colors.grey[100],
-    primaryColorBrightness: Brightness.light);
+  primarySwatch: Colors.orange,
+  primaryColor: Colors.grey[100],
+  primaryColorBrightness: Brightness.light,
+);
+
 final ThemeData kDefaultTheme = ThemeData(
   primarySwatch: Colors.purple,
   accentColor: Colors.orangeAccent[400],
 );
 
+String _name = 'Shubhangi';
+
 class FriendlyChatApp extends StatelessWidget {
   const FriendlyChatApp({
     Key key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,16 +41,16 @@ class FriendlyChatApp extends StatelessWidget {
 class ChatMessage extends StatelessWidget {
   ChatMessage({this.text, this.animationController});
   final String text;
-  String _name = 'Shubhu';
   final AnimationController animationController;
 
   @override
   Widget build(BuildContext context) {
     return SizeTransition(
       sizeFactor:
-          CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+      CurvedAnimation(parent: animationController, curve: Curves.easeOut),
       axisAlignment: 0.0,
       child: Container(
+        margin: EdgeInsets.symmetric(vertical: 10.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -57,17 +62,16 @@ class ChatMessage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(_name, style: Theme.of(context).textTheme.headline6),
+                  Text(_name, style: Theme.of(context).textTheme.headline4),
                   Container(
-                    child: Text(text),
                     margin: EdgeInsets.only(top: 5.0),
-                  )
+                    child: Text(text),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
-        margin: EdgeInsets.symmetric(vertical: 10.0),
       ),
     );
   }
@@ -82,22 +86,42 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final List<ChatMessage> _messages = [];
   final _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
-  // a private variable that is true whenever the user types in the input field
   bool _isComposing = false;
 
-  void _handleSubmitted(String text) {
-    _textController.clear();
-
-    ChatMessage message = ChatMessage(
-      text: text,
-      animationController: AnimationController(
-          duration: const Duration(milliseconds: 700), vsync: this),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FriendlyChat'),
+        elevation:
+        Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+      ),
+      body: Container(
+          child: Column(
+            children: [
+              Flexible(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8.0),
+                  reverse: true,
+                  itemBuilder: (_, int index) => _messages[index],
+                  itemCount: _messages.length,
+                ),
+              ),
+              Divider(height: 1.0),
+              Container(
+                decoration: BoxDecoration(color: Theme.of(context).cardColor),
+                child: _buildTextComposer(),
+              ),
+            ],
+          ),
+          decoration: Theme.of(context).platform == TargetPlatform.iOS //new
+              ? BoxDecoration(
+            border: Border(
+              top: BorderSide(color: Colors.grey[200]),
+            ),
+          )
+              : null),
     );
-    setState(() {
-      _messages.insert(0, message);
-    });
-    _focusNode.requestFocus();
-    message.animationController.forward();
   }
 
   Widget _buildTextComposer() {
@@ -117,69 +141,48 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                 },
                 onSubmitted: _isComposing ? _handleSubmitted : null,
                 decoration:
-                    InputDecoration.collapsed(hintText: 'Send a message'),
+                InputDecoration.collapsed(hintText: 'Send a message'),
                 focusNode: _focusNode,
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 4.0),
-              // check plateform os
-              child: Theme.of(context).platform == TargetPlatform.iOS
-                  ? CupertinoButton(
-                      child: Text('Send'),
-                      onPressed: _isComposing
-                          ? () => _handleSubmitted(_textController.text)
-                          : null,
-                    )
-                  : IconButton(
-                      icon: const Icon(Icons.send),
-                      onPressed: () => _isComposing
-                          ? () => _handleSubmitted(_textController.text)
-                          : null,
-                    ),
-            )
+                margin: EdgeInsets.symmetric(horizontal: 4.0),
+                child: Theme.of(context).platform == TargetPlatform.iOS
+                    ? CupertinoButton(
+                  child: Text('Send'),
+                  onPressed: _isComposing
+                      ? () => _handleSubmitted(_textController.text)
+                      : null,
+                )
+                    : IconButton(
+                  icon: const Icon(Icons.send),
+                  onPressed: _isComposing
+                      ? () => _handleSubmitted(_textController.text)
+                      : null,
+                ))
           ],
         ),
       ),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('FriendlyChat'),
-        // defines the z-coordinates of the AppBar. A z-coordinate value of 0.0 has no shadow (iOS) and a value of 4.0 has a defined shadow (Android)
-        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            Flexible(
-              child: ListView.builder(
-                padding: EdgeInsets.all(8.0),
-                reverse: true,
-                itemBuilder: (_, int index) => _messages[index],
-                itemCount: _messages.length,
-              ),
-            ),
-            Divider(height: 1.0),
-            Container(
-              decoration: BoxDecoration(color: Theme.of(context).cardColor),
-              child: _buildTextComposer(),
-            )
-          ],
-        ),
-        // border add
-        decoration: Theme.of(context).platform == TargetPlatform.iOS
-            ? BoxDecoration(
-                border: Border(
-                  top: BorderSide(color: Colors.grey[200]),
-                ),
-              )
-            : null,
+  void _handleSubmitted(String text) {
+    _textController.clear();
+    setState(() {
+      _isComposing = false;
+    });
+    ChatMessage message = ChatMessage(
+      text: text,
+      animationController: AnimationController(
+        duration: const Duration(milliseconds: 700),
+        vsync: this,
       ),
     );
+    setState(() {
+      _messages.insert(0, message);
+    });
+    _focusNode.requestFocus();
+    message.animationController.forward();
   }
 
   @override
