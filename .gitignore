@@ -32,6 +32,7 @@
 /Exercise-IV/build
 /Exercise-I/build
 /Exercise-III/build
+/MagicBall/build
 
 # Web related
 lib/generated_plugin_registrant.dart
