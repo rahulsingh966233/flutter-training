@@ -19,7 +19,9 @@ class BallPage extends StatelessWidget {
 //        set title
         title: Text('Ask Me Anything'),
       ),
-      body: Container(),
+      body: Container(
+        child: Ball(),
+      ),
     );
   }
 }
@@ -53,5 +55,3 @@ class _BallState extends State<Ball> {
     );
   }
 }
-
-
