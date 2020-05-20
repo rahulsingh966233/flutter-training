@@ -28,13 +28,19 @@ class Ball extends StatefulWidget {
 class _BallState extends State<Ball> {
   int ballNumber = 1;
 
+  void _handleSubmitted(int number) {
+    setState(() {
+      ballNumber = number;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
         child: Container(
           child: FlatButton(
-              onPressed: () => _,
+              onPressed: () => _handleSubmitted(Random().nextInt(5) + 1),
               child: Image.asset('images/ball$ballNumber.png')),
         ),
       ),
