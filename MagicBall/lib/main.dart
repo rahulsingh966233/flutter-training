@@ -48,7 +48,7 @@ class _BallState extends State<Ball> {
         child: Container(
           child: FlatButton(
               onPressed: () => _handleSubmitted(Random().nextInt(5) + 1),
-//              For dynamic implemetaion of image on CLick
+//              For dynamic implementation of image on CLick
               child: Image.asset('images/ball$ballNumber.png')),
         ),
       ),
