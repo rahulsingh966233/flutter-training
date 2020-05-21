@@ -3,8 +3,10 @@ class Question {
   bool questionAnswer;
 
 //  Constructor
-  Question({String q, bool a}) {
+  Question(String q, bool a) {
     questionText = q;
     questionAnswer = a;
   }
 }
+
+Question newQuestion = Question('text', true);
