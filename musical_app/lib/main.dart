@@ -5,10 +5,9 @@ import 'package:audioplayers/audioplayers.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
-
-  void playSound(){
+  void playSound(int musicFileNumber) {
     final player = AudioCache();
-    player.play('note2.wav');
+    player.play('note$musicFileNumber.wav');
   }
 
   @override
@@ -21,44 +20,43 @@ class XylophoneApp extends StatelessWidget {
               FlatButton(
                 color: Colors.red,
                 onPressed: () {
-                  playSound();
+                  playSound(1);
                 },
               ),
               FlatButton(
                 color: Colors.green,
                 onPressed: () {
-                  playSound();
+                  playSound(2);
                 },
-                child: Text('Click Me'),
               ),
               FlatButton(
                 color: Colors.yellow,
                 onPressed: () {
-                  playSound();
+                  playSound(3);
                 },
               ),
               FlatButton(
                 color: Colors.blue,
                 onPressed: () {
-                  playSound();
+                  playSound(4);
                 },
               ),
               FlatButton(
                 color: Colors.grey,
                 onPressed: () {
-                  playSound();
+                  playSound(5);
                 },
               ),
               FlatButton(
                 color: Colors.purple,
                 onPressed: () {
-                  playSound();
+                  playSound(6);
                 },
               ),
               FlatButton(
                 color: Colors.orange,
                 onPressed: () {
-                  playSound();
+                  playSound(7);
                 },
               ),
             ],
