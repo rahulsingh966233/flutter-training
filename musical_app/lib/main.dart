@@ -44,6 +44,18 @@ class XylophoneApp extends StatelessWidget {
                   player.play('note5.wav');
                 },
               ),
+              FlatButton(
+                onPressed: () {
+                  final player = AudioCache();
+                  player.play('note6.wav');
+                },
+              ),
+              FlatButton(
+                onPressed: () {
+                  final player = AudioCache();
+                  player.play('note7.wav');
+                },
+              ),
             ],
           ),
         ),
