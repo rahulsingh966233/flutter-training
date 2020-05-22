@@ -35,12 +35,16 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.getCorrectAnswer();
     setState(() {
       if (quizBrain.isFinished() == true) {
+        //This is the code for the basic alert from the docs for rFlutter Alert:
+        //Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.").show();
         Alert(
           context: context,
           title: 'Finished!',
           desc: 'You\'ve reached the end of the quiz.',
         ).show();
+        //reset the questionNumber,
         quizBrain.reset();
+        //empty out the scoreKeeper.
         scorekeeper = [];
       } else {
         if (userPickedAnswer == correctAnswer) {
@@ -97,6 +101,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                //The user picked true.
                 checkAnswer(true);
               },
             ),
@@ -115,6 +120,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                //The user picked false.
                 checkAnswer(false);
               },
             ),
