@@ -37,11 +37,11 @@ class QuizBrain {
     }
   }
 
-  String getQuestionText(int questionNumber){
+  String getQuestionText(){
     return _questionBank[_questionNumber].questionText;
   }
 
-  bool getCorrectAnswer(int questionNumber){
+  bool getCorrectAnswer(){
     return _questionBank[_questionNumber].questionAnswer;
   }
 

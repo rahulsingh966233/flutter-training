@@ -35,9 +35,9 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer =
     quizBrain.getCorrectAnswer();
     if (userPickedAnswer == correctAnswer) {
-      scorekeeper.add(Icon(Icons.check,color: Colors.green,))
+      scorekeeper.add(Icon(Icons.check,color: Colors.green,));
     } else {
-      scorekeeper.add(Icon(Icons.close,color: Colors.red,))
+      scorekeeper.add(Icon(Icons.close,color: Colors.red,));
     }
     setState(() {
       quizBrain.nextQuestion();
