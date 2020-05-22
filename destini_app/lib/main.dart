@@ -14,6 +14,7 @@ class Destini extends StatelessWidget {
   }
 }
 
+//object creation
 StoryBrain storyBrain = StoryBrain();
 
 class StoryPage extends StatefulWidget {
