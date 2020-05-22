@@ -16,27 +16,34 @@ class WidgetOfTheWeek extends StatelessWidget {
             runSpacing: 20.0,
             children: [
               Chip(
-                avatar: CircleAvatar(backgroundColor: Colors.blue.shade900, child: Text('AH')),
+                avatar: CircleAvatar(
+                    backgroundColor: Colors.blue.shade900, child: Text('AH')),
                 label: Text('Hamilton'),
               ),
               Chip(
-                avatar: CircleAvatar(backgroundColor: Colors.blue.shade900, child: Text('ML')),
+                avatar: CircleAvatar(
+                    backgroundColor: Colors.blue.shade900, child: Text('ML')),
                 label: Text('Lafayette'),
               ),
               FutureBuilder(
-                future: http.get('https://jsonplaceholder.typicode.com/todos'),
-                builder: (context,snapshot){
-                  if(snapshot.connectionState == ConnectionState.done){
-                    return Text('Data Got');
-                  }else{
-                    return CircularProgressIndicator();
-                  }
-              }
-              ),
+                  future:
+                      http.get('https://jsonplaceholder.typicode.com/todos'),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Text('Data Got');
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  }),
 //              FadeTransition(
 //                opacity: null,
 //                child: Text('Sh'),
 //              )
+              Scaffold(
+                  floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: () {},
+              ))
             ],
           ),
         ),
