@@ -29,18 +29,32 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scorekeeper = [
-  ];
+  List<Icon> scorekeeper = [];
 
-  void checkAnswer(bool userPickedAnswer){
-    bool correctAnswer =
-    quizBrain.getCorrectAnswer();
-    if (userPickedAnswer == correctAnswer) {
-      scorekeeper.add(Icon(Icons.check,color: Colors.green,));
-    } else {
-      scorekeeper.add(Icon(Icons.close,color: Colors.red,));
-    }
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getCorrectAnswer();
     setState(() {
+      if (quizBrain.isFinished() == true) {
+        Alert(
+          context: context,
+          title: 'Finished!',
+          desc: 'You\'ve reached the end of the quiz.',
+        ).show();
+        quizBrain.reset();
+        scorekeeper = [];
+      } else {
+        if (userPickedAnswer == correctAnswer) {
+          scorekeeper.add(Icon(
+            Icons.check,
+            color: Colors.green,
+          ));
+        } else {
+          scorekeeper.add(Icon(
+            Icons.close,
+            color: Colors.red,
+          ));
+        }
+      }
       quizBrain.nextQuestion();
     });
   }
