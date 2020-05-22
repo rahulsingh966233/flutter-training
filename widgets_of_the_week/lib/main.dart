@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(WidgetOfTheWeek());
 
@@ -21,6 +23,16 @@ class WidgetOfTheWeek extends StatelessWidget {
                 avatar: CircleAvatar(backgroundColor: Colors.blue.shade900, child: Text('ML')),
                 label: Text('Lafayette'),
               ),
+              FutureBuilder(
+                future: http.get('https://jsonplaceholder.typicode.com/todos'),
+                builder: (context,snapshot){
+                  if(snapshot.connectionState == ConnectionState.done){
+                    return Text('Data Got');
+                  }else{
+                    return CircularProgressIndicator();
+                  }
+              }
+              )
             ],
           ),
         ),
