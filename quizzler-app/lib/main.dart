@@ -28,15 +28,16 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scorekeeper = [];
+  List<Icon> scorekeeper = [
+  ];
 
   void checkAnswer(bool userPickedAnswer){
     bool correctAnswer =
     quizBrain.getCorrectAnswer();
     if (userPickedAnswer == correctAnswer) {
-      print('User got it right');
+      scorekeeper.add(Icon(Icons.check,color: Colors.green,))
     } else {
-      print('User got it false');
+      scorekeeper.add(Icon(Icons.close,color: Colors.red,))
     }
     setState(() {
       quizBrain.nextQuestion();
