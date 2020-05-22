@@ -42,6 +42,7 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 12,
                 child: Center(
                   child: Text(
+//                    call getstory methodfrom storyBrain to get first title from list
                     storyBrain.getStory(),
                     style: TextStyle(
                       fontSize: 25.0,
