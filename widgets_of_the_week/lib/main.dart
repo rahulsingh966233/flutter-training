@@ -15,39 +15,64 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Table'),),
+        appBar: AppBar(
+          title: Text('Flutter Table'),
+        ),
         body: Center(
-          child: Column(children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Table(
-                border: TableBorder.all(),
-                children: [
-                  TableRow(
-                    children: [
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(20),
+                child: Table(
+                  border: TableBorder.all(),
+                  children: [
+                    TableRow(children: [
                       Column(
                         children: [
-                          Icon(Icons.account_box,size:iconSize,),
+                          Icon(
+                            Icons.account_box,
+                            size: iconSize,
+                          ),
                           Text('MyAcc'),
                         ],
                       ),
+                      Column(
+                        children: [
+                          Icon(
+                            Icons.settings,
+                            size: iconSize,
+                          ),
+                          Text('Setting'),
+                        ],
+                      ),
                       Column(children: [
-                        Icon(Icons.account_box,size:iconSize,),
-                        Text('MySave'),
-                      ],)
-                    ]
-                  )
-                ],
-
-              ),
-            )
-          ],),
+                        Icon(
+                          Icons.lightbulb_outline,
+                          size: iconSize,
+                        ),
+                        Text('Ideas')
+                      ]),
+                    ]),
+                    TableRow(children: [
+                     Column(
+                       children: [
+                         Icon(
+                           Icons.send,
+                           size: iconSize,
+                         )
+                       ],
+                     )
+                    ])
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
 
 class WidgetOfTheWeek extends StatelessWidget {
   @override
@@ -90,7 +115,6 @@ class WidgetOfTheWeek extends StatelessWidget {
 //                onPressed: () {},
 //              )
 //              )
-
             ],
           ),
         ),
