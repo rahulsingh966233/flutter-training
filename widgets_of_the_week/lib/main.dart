@@ -70,7 +70,7 @@ class DragItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       IconData(57744, fontFamily: 'MaterialIcons'),
-      size: 30,
+      size: 60,
     );
   }
 }
