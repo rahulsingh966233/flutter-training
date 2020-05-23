@@ -1,30 +1,57 @@
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+//https://fluttercentral.com/Articles/Post/1211/AnimatedIcon_Example_in_Flutter
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'MediaQuery Demo',
-      home: new MyHomePage(),
-    );
-  }
+void main() => runApp(LogoApp());
+
+class LogoApp extends StatefulWidget {
+  _LogoAppState createState() => _LogoAppState();
 }
 
-class MyHomePage extends StatelessWidget {
+class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+  bool isPlaying = false;
+
+  Animation animation;
+
+  AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size.width;
-    return new Container(
-      child: Row(
-        children: <Widget>[
-          Container(color: Colors.red, child: Text("Left")),
-          Spacer(),
-          Container(color: Colors.red, child: Text("Right")),
-        ],
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+            child: IconButton(
+              iconSize: 70,
+              icon: AnimatedIcon(
+                icon: AnimatedIcons.play_pause,
+                progress: AnimationController(
+                    duration: const Duration(milliseconds: 500), vsync: this),
+              ),
+              onPressed: () => _onpressed(),
+            )
+        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+
+    super.dispose();
+  }
+
+  _onpressed() {
+    setState(() {
+      isPlaying = !isPlaying;
+
+      isPlaying ? controller.forward() : controller.reverse();
+    });
   }
 }
