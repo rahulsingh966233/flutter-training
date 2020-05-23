@@ -19,6 +19,9 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: this);
   }
 
   @override
@@ -30,8 +33,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
               iconSize: 70,
               icon: AnimatedIcon(
                 icon: AnimatedIcons.play_pause,
-                progress: AnimationController(
-                    duration: const Duration(milliseconds: 500), vsync: this),
+                progress: controller,
               ),
               onPressed: () => _onpressed(),
             )
@@ -43,14 +45,12 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   @override
   void dispose() {
     controller.dispose();
-
     super.dispose();
   }
 
   _onpressed() {
     setState(() {
       isPlaying = !isPlaying;
-
       isPlaying ? controller.forward() : controller.reverse();
     });
   }
