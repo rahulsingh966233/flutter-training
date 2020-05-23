@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  final items = List<String>.generate(20, (i) => "Item ${i + 1}");
+  final items = List<String>.generate(10, (i) => "Item ${i + 1}");
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,6 @@ class MyAppState extends State<MyApp> {
           itemCount: items.length,
           itemBuilder: (context, index) {
             final item = items[index];
-
             return Dismissible(
               // Each Dismissible must contain a Key. Keys allow Flutter to
               // uniquely identify widgets.
@@ -47,11 +46,10 @@ class MyAppState extends State<MyApp> {
                 // Remove the item from the data source.
                 setState(() {
                   items.removeAt(index);
+                  // Then show a snackbar.
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text("$item dismissed")));
                 });
-
-                // Then show a snackbar.
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text("$item dismissed")));
               },
               // Show a red background as the item is swiped away.
               background: Container(color: Colors.red),
