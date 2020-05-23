@@ -1,63 +1,76 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-// MyApp is a StatefulWidget. This allows updating the state of the
-// widget when an item is removed.
-class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
-
-  @override
-  MyAppState createState() {
-    return MyAppState();
-  }
-}
-
-class MyAppState extends State<MyApp> {
-  final items = List<String>.generate(10, (i) => "Item ${i + 1}");
-
+void main() => runApp(
+  new MyApp(),
+);
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = 'Dismissing Items';
-
     return MaterialApp(
-      title: title,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            final item = items[index];
-            return Dismissible(
-              // Each Dismissible must contain a Key. Keys allow Flutter to
-              // uniquely identify widgets.
-              key: Key(item),
-              // Provide a function that tells the app
-              // what to do after an item has been swiped away.
-              onDismissed: (direction) {
-                // Remove the item from the data source.
-                setState(() {
-                  items.removeAt(index);
-                  // Then show a snackbar.
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text("$item dismissed")));
-                });
-              },
-              // Show a red background as the item is swiped away.
-              background: Container(color: Colors.red),
-              child: ListTile(title: Text('$item')),
-            );
+      title: 'Draggable',
+      home: Drag(),
+    );
+  }
+}
+class Drag extends StatefulWidget {
+  Drag({Key key}) : super(key: key);
+  @override
+  _DragState createState() => _DragState();
+}
+class _DragState extends State<Drag> {
+  double top = 0;
+  double left = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.topLeft,
+        margin: EdgeInsets.all(30),
+        height: 300,
+        width: 300,
+        color: Colors.indigo.shade100,
+        child: Draggable(
+          child: Container(
+            padding: EdgeInsets.only(top: top, left: left),
+            child: DragItem(),
+          ),
+          feedback: Container(
+            padding: EdgeInsets.only(top: top, left: left),
+            child: DragItem(),
+          ),
+          childWhenDragging: Container(
+            padding: EdgeInsets.only(top: top, left: left),
+            child: DragItem(),
+          ),
+          onDragCompleted: () {},
+          onDragEnd: (drag) {
+            setState(() {
+              if((top + drag.offset.dy) > (300.0 - 30.0)){
+                top = (300.0 - 30.0);
+              }else if((top + drag.offset.dy-30.0) < 0.0){
+                top = 0;
+              }else{
+                top =  top + drag.offset.dy-30.0;
+              }
+              if((left + drag.offset.dx) > (300.0 - 30.0)){
+                left = (300.0 - 30.0);
+              }else if((left + drag.offset.dx-30.0) < 0.0){
+                left = 0;
+              }else{
+                left =  left + drag.offset.dx-30.0;
+              }
+            });
           },
         ),
       ),
+    );
+  }
+}
+class DragItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      IconData(57744, fontFamily: 'MaterialIcons'),
+      size: 30,
     );
   }
 }
