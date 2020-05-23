@@ -4,6 +4,51 @@ import 'package:http/http.dart' as http;
 
 void main() => runApp(WidgetOfTheWeek());
 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  double iconSize = 20;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Flutter Table'),),
+        body: Center(
+          child: Column(children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(20),
+              child: Table(
+                border: TableBorder.all(),
+                children: [
+                  TableRow(
+                    children: [
+                      Column(
+                        children: [
+                          Icon(Icons.account_box,size:iconSize,),
+                          Text('MyAcc'),
+                        ],
+                      ),
+                      Column(children: [
+                        Icon(Icons.account_box,size:iconSize,),
+                        Text('MySave'),
+                      ],)
+                    ]
+                  )
+                ],
+
+              ),
+            )
+          ],),
+        ),
+      ),
+    );
+  }
+}
+
+
 class WidgetOfTheWeek extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,25 +70,27 @@ class WidgetOfTheWeek extends StatelessWidget {
                     backgroundColor: Colors.blue.shade900, child: Text('ML')),
                 label: Text('Lafayette'),
               ),
-              FutureBuilder(
-                  future:
-                      http.get('https://jsonplaceholder.typicode.com/todos'),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return Text('Data Got');
-                    } else {
-                      return CircularProgressIndicator();
-                    }
-                  }),
+//              FutureBuilder(
+//                  future:
+//                      http.get('https://jsonplaceholder.typicode.com/todos'),
+//                  builder: (context, snapshot) {
+//                    if (snapshot.connectionState == ConnectionState.done) {
+//                      return Text('Data Got');
+//                    } else {
+//                      return CircularProgressIndicator();
+//                    }
+//                  }),
 //              FadeTransition(
 //                opacity: null,
 //                child: Text('Sh'),
 //              )
-              Scaffold(
-                  floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.add),
-                onPressed: () {},
-              ))
+//              Scaffold(
+//                  floatingActionButton: FloatingActionButton(
+//                child: Icon(Icons.add),
+//                onPressed: () {},
+//              )
+//              )
+
             ],
           ),
         ),
