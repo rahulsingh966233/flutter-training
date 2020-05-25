@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-//https://medium.com/flutteropen/flutter-widgets-10-placeholder-f8949a7dc273
+//https://api.flutter.dev/flutter/widgets/RichText-class.html
 
 void main() => runApp(LogoApp());
 
