@@ -23,12 +23,44 @@ class _LogoAppState extends State<LogoApp> {
           ),
           body: Column(
             children: <Widget>[
-              SizedBox(
-                height: 50,
+              Container(
+                height: 100,
+                width: 200,
+                child: AnimatedPadding(
+                  child: Container(
+                    color: Colors.red,
+                  ),
+                  duration: const Duration(seconds: 1),
+                  padding: EdgeInsets.all(padValue),
+                  curve: Curves.easeInOut,
+                ),
               ),
-           Container(
-             child: AnimatedPadding(
+              Text('Padding Value: $padValue'),
+              ButtonBar(
+                alignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  RaisedButton(
+                    child: Text("Add Padding"),
+                    onPressed: (){
+                      setState(() {
+                        padValue = padValue + 10;
+                      });
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text("Remove Padding"),
+                    onPressed: (){
+                      setState(() {
+                        if(padValue != 0)
+                          padValue = padValue - 10;
+                      });
+                    },
+                  )
 
+                ],
+              ),
+              Container(
+             child: AnimatedPadding(
                duration: Duration(seconds: 1),
                curve: Curves.easeInOut,
                padding: EdgeInsets.all(0),
