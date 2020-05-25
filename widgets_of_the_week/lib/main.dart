@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(LogoApp());
@@ -6,22 +8,29 @@ class LogoApp extends StatefulWidget {
   _LogoAppState createState() => _LogoAppState();
 }
 
-class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+class _LogoAppState extends State<LogoApp> {
+  final length = 10;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body:  Align(
-          child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AspectRatio(
-                  aspectRatio: 100 / 200,
-                  child: Text('shubh'),
-                ),
-              )),
-        ),
+        body:  ListView.builder(itemBuilder: (BuildContext context, int i){
+          return LimitedBox(
+            maxHeight: 60,
+              child: Container(
+                color: UniqueColorGenerator.getColor(),
+              ),
+          );
+        })
       ),
     );
+  }
+}
+class UniqueColorGenerator{
+  static Random random = new Random();
+  static Color getColor(){
+    return Color.fromARGB(255, random.nextInt(255), 
+        random.nextInt(255), random.nextInt(255));
   }
 }
