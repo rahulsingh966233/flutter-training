@@ -18,8 +18,8 @@ class _LogoAppState extends State<LogoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Widgets Demo"),
+          appBar: AppBar(
+            title: Text("Widgets Demo"),
           ),
           body: Column(
             children: <Widget>[
@@ -37,11 +37,11 @@ class _LogoAppState extends State<LogoApp> {
               ),
               Text('Padding Value: $padValue'),
               ButtonBar(
-                alignment: MainAxisAlignment.end,
+                alignment: MainAxisAlignment.center,
                 children: <Widget>[
                   RaisedButton(
                     child: Text("Add Padding"),
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
                         padValue = padValue + 10;
                       });
@@ -49,26 +49,24 @@ class _LogoAppState extends State<LogoApp> {
                   ),
                   RaisedButton(
                     child: Text("Remove Padding"),
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
-                        if(padValue != 0)
-                          padValue = padValue - 10;
+                        if (padValue != 0) padValue = padValue - 10;
                       });
                     },
                   )
-
                 ],
               ),
               Container(
-             child: AnimatedPadding(
-               duration: Duration(seconds: 1),
-               curve: Curves.easeInOut,
-               padding: EdgeInsets.all(0),
-               child: Container(
-                 color: Colors.red,
-               ),
-             ),
-           ),
+                child: AnimatedPadding(
+                  duration: Duration(seconds: 1),
+                  curve: Curves.easeInOut,
+                  padding: EdgeInsets.all(0),
+                  child: Container(
+                    color: Colors.red,
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -76,7 +74,8 @@ class _LogoAppState extends State<LogoApp> {
                 height: 100,
                 child: AnimatedSwitcher(
                   duration: const Duration(seconds: 2),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
                     return ScaleTransition(child: child, scale: animation);
                   },
                   child: _myAnimatedWidget,
@@ -87,13 +86,22 @@ class _LogoAppState extends State<LogoApp> {
                 onPressed: () {
                   setState(() {
                     _myAnimatedWidget =
-                    (_myAnimatedWidget.toString() == "FirstWidget")
-                        ? SecondWidget()
-                        : FirstWidget();
+                        (_myAnimatedWidget.toString() == "FirstWidget")
+                            ? SecondWidget()
+                            : FirstWidget();
                   });
                 },
+              ),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                    minHeight: 50,
+                    maxHeight: 100,
+                    maxWidth: 200,
+                    minWidth: 200),
+                child: RaisedButton(
+                  child: Text('Tap Me'),
+                ),
               )
-
             ],
           )),
     );
