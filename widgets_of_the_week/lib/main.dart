@@ -99,7 +99,9 @@ class _LogoAppState extends State<LogoApp> {
                     maxWidth: 200,
                     minWidth: 200),
                 child: RaisedButton(
-                  child: Text('Tap Me'),
+                  child: Text(
+                    'Tap Me',
+                  ),
                 ),
               )
             ],
