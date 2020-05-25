@@ -154,7 +154,34 @@ class _LogoAppState extends State<LogoApp> {
                    ),
                  ),
                ),
-             )
+             ),
+              Text("ListView",textAlign: TextAlign.center),
+              SizedBox(height: 10,),
+              Container(
+                height: 200,
+//                color: Colors.lightBlue,
+                child: ListView(
+                  padding: const EdgeInsets.all(10),
+                  children: [
+                    Container(
+                      height: 30,
+                      color: Colors.amber[600],
+                      child: Text('Shubhhhhhhhhhhhh'),
+                    ),
+                    Container(
+                      height: 30,
+                      color: Colors.amber[500],
+                      child: Text('text 2222222'),
+                    ),
+                    Container(
+                      height: 30,
+                      color: Colors.amber[100],
+                      child: Text('Textttttttt3'),
+                    )
+                  ],
+                ),
+              )
+
             ],
           ),
         ),
