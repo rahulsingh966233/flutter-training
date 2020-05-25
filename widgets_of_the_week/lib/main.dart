@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-//https://fluttercentral.com/Articles/Post/1213/LimitedBox_widget_example_in_Flutter
+//https://medium.com/flutteropen/flutter-widgets-10-placeholder-f8949a7dc273
 
 void main() => runApp(LogoApp());
 
@@ -16,22 +16,32 @@ class _LogoAppState extends State<LogoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body:  ListView.builder(itemBuilder: (BuildContext context, int i){
-          return LimitedBox(
-            maxHeight: 60,
-              child: Container(
-                color: UniqueColorGenerator.getColor(),
-              ),
-          );
-        })
-      ),
+          body: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 100,
+          ),
+          Container(
+            height: 100,
+            child: Placeholder(
+              color: Colors.green,
+              strokeWidth: 10,
+            ),
+          ),
+          SizedBox(
+            height: 100,
+          ),
+          Container(
+            constraints: BoxConstraints.expand(height: 100, width: 100),
+            child: Placeholder(
+              color: Colors.blue,
+              strokeWidth: 4,
+              fallbackWidth: 10,
+              fallbackHeight: 60,
+            ),
+          ),
+        ],
+      )),
     );
-  }
-}
-class UniqueColorGenerator{
-  static Random random = new Random();
-  static Color getColor(){
-    return Color.fromARGB(255, random.nextInt(255), 
-        random.nextInt(255), random.nextInt(255));
   }
 }
