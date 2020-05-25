@@ -110,17 +110,23 @@ class _LogoAppState extends State<LogoApp> {
                   height: 100,
                   width: 100,
                 ),
-                Container(
-                  color: Colors.green,
-                  width: 80,
-                  height: 80,
+                Positioned(
+                  bottom: 10,
+                  right: 20,
+                  child: Container(
+                    color: Colors.green,
+                    width: 80,
+                    height: 80,
+                  ),
                 ),
                 Container(
                   color: Colors.blue,
                   height: 60,
                   width: 60,
                 )
+
               ],
+              overflow: Overflow.clip,
             )
           ],
         ),
