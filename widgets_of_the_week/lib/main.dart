@@ -1,7 +1,8 @@
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//https://api.flutter.dev/flutter/widgets/RichText-class.html
+//https://medium.com/@adp4infotech4/flutter-building-a-reorderable-listview-735013719cf3
 
 void main() => runApp(LogoApp());
 
@@ -10,7 +11,7 @@ class LogoApp extends StatefulWidget {
 }
 
 class _LogoAppState extends State<LogoApp> {
-  final length = 10;
+  List<String> name = ['S','H','U','B','H','A','N','G','I'];
 
   @override
   Widget build(BuildContext context) {
@@ -22,68 +23,35 @@ class _LogoAppState extends State<LogoApp> {
             height: 100,
           ),
           Container(
-            height: 100,
-            child: Placeholder(
-              color: Colors.green,
-              strokeWidth: 10,
+            height: 500,
+            child: ReorderableListView(
+              onReorder: _onReorderView,
+              children: [
+                for(var item in name)
+                  ListTile(
+                    key:ValueKey(item),
+                    title: Text('Item#$item')
+                  )
+              ],
             ),
           ),
           SizedBox(
             height: 100,
           ),
-          Container(
-              child: RichText(
-            text: TextSpan(
-              text: 'Hello ',
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'bold',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.red)),
-                TextSpan(
-                    text: ' world!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.green)),
-              ],
-            ),
-          )),
-
         ],
       )),
     );
   }
+  void _onReorderView(int oldIndex, int newIndex) {
+    setState(
+          () {
+        if (newIndex > oldIndex) {
+          newIndex -= 1;
+        }
+        final String item = name.removeAt(oldIndex);
+        name.insert(newIndex, item);
+      },
+    );
+  }
 }
+
