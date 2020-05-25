@@ -1,4 +1,3 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(LogoApp());
@@ -17,7 +16,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AspectRatio(
-                  aspectRatio: 3 / 2,
+                  aspectRatio: 100 / 200,
                   child: Text('shubh'),
                 ),
               )),
