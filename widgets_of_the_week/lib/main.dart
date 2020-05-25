@@ -32,14 +32,56 @@ class _LogoAppState extends State<LogoApp> {
             height: 100,
           ),
           Container(
-            constraints: BoxConstraints.expand(height: 100, width: 100),
-            child: Placeholder(
-              color: Colors.blue,
-              strokeWidth: 4,
-              fallbackWidth: 10,
-              fallbackHeight: 60,
+              child: RichText(
+            text: TextSpan(
+              text: 'Hello ',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'bold',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.red)),
+                TextSpan(
+                    text: ' world!',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.green)),
+              ],
             ),
-          ),
+          )),
+
         ],
       )),
     );
