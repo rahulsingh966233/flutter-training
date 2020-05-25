@@ -18,94 +18,113 @@ class _LogoAppState extends State<LogoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("Widgets Demo"),
-          ),
-          body: Column(
-            children: <Widget>[
-              Container(
-                height: 100,
-                width: 200,
-                child: AnimatedPadding(
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                  duration: const Duration(seconds: 1),
-                  padding: EdgeInsets.all(padValue),
-                  curve: Curves.easeInOut,
+        appBar: AppBar(
+          title: Text("Widgets Demo"),
+        ),
+        body: Column(
+          children: <Widget>[
+            Container(
+              height: 100,
+              width: 200,
+              child: AnimatedPadding(
+                child: Container(
+                  color: Colors.red,
                 ),
+                duration: const Duration(seconds: 1),
+                padding: EdgeInsets.all(padValue),
+                curve: Curves.easeInOut,
               ),
-              Text('Padding Value: $padValue'),
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
-                    child: Text("Add Padding"),
-                    onPressed: () {
-                      setState(() {
-                        padValue = padValue + 10;
-                      });
-                    },
-                  ),
-                  RaisedButton(
-                    child: Text("Remove Padding"),
-                    onPressed: () {
-                      setState(() {
-                        if (padValue != 0) padValue = padValue - 10;
-                      });
-                    },
-                  )
-                ],
-              ),
-              Container(
-                child: AnimatedPadding(
-                  duration: Duration(seconds: 1),
-                  curve: Curves.easeInOut,
-                  padding: EdgeInsets.all(0),
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 100,
-                child: AnimatedSwitcher(
-                  duration: const Duration(seconds: 2),
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) {
-                    return ScaleTransition(child: child, scale: animation);
+            ),
+            Text('Padding Value: $padValue'),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Add Padding"),
+                  onPressed: () {
+                    setState(() {
+                      padValue = padValue + 10;
+                    });
                   },
-                  child: _myAnimatedWidget,
+                ),
+                RaisedButton(
+                  child: Text("Remove Padding"),
+                  onPressed: () {
+                    setState(() {
+                      if (padValue != 0) padValue = padValue - 10;
+                    });
+                  },
+                )
+              ],
+            ),
+            Container(
+              child: AnimatedPadding(
+                duration: Duration(seconds: 1),
+                curve: Curves.easeInOut,
+                padding: EdgeInsets.all(0),
+                child: Container(
+                  color: Colors.red,
                 ),
               ),
-              RaisedButton(
-                child: Text('Click here'),
-                onPressed: () {
-                  setState(() {
-                    _myAnimatedWidget =
-                        (_myAnimatedWidget.toString() == "FirstWidget")
-                            ? SecondWidget()
-                            : FirstWidget();
-                  });
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 100,
+              child: AnimatedSwitcher(
+                duration: const Duration(seconds: 2),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return ScaleTransition(child: child, scale: animation);
                 },
+                child: _myAnimatedWidget,
               ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                    minHeight: 50,
-                    maxHeight: 100,
-                    maxWidth: 200,
-                    minWidth: 200),
-                child: RaisedButton(
-                  child: Text(
-                    'Tap Me',
-                  ),
+            ),
+            RaisedButton(
+              child: Text('Click here'),
+              onPressed: () {
+                setState(() {
+                  _myAnimatedWidget =
+                      (_myAnimatedWidget.toString() == "FirstWidget")
+                          ? SecondWidget()
+                          : FirstWidget();
+                });
+              },
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                  minHeight: 50, maxHeight: 100, maxWidth: 200, minWidth: 200),
+              child: RaisedButton(
+                child: Text(
+                  'Tap Me',
                 ),
-              )
-            ],
-          )),
+              ),
+            ),
+
+//              Multi color overlap box
+            Stack(
+//                fit: StackFit.loose,
+              children: <Widget>[
+                Container(
+                  color: Colors.red,
+                  height: 100,
+                  width: 100,
+                ),
+                Container(
+                  color: Colors.green,
+                  width: 80,
+                  height: 80,
+                ),
+                Container(
+                  color: Colors.blue,
+                  height: 60,
+                  width: 60,
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }
