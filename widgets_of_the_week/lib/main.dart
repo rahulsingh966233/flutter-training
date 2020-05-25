@@ -13,6 +13,11 @@ class _LogoAppState extends State<LogoApp> {
   List<String> name = ['S', 'H', 'U', 'B', 'H', 'A', 'N', 'G', 'I'];
   Widget _myAnimatedWidget = FirstWidget();
   double padValue = 0;
+  double opacityLevel = 1.0;
+
+  void _changeOpacity() {
+    setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,9 +106,7 @@ class _LogoAppState extends State<LogoApp> {
               ),
             ),
 
-//              Multi color overlap box
             Stack(
-//                fit: StackFit.loose,
               children: <Widget>[
                 Container(
                   color: Colors.red,
@@ -111,7 +114,7 @@ class _LogoAppState extends State<LogoApp> {
                   width: 100,
                 ),
                 Positioned(
-                  bottom: 10,
+                  bottom: 20,
                   right: 20,
                   child: Container(
                     color: Colors.green,
@@ -124,10 +127,22 @@ class _LogoAppState extends State<LogoApp> {
                   height: 60,
                   width: 60,
                 )
-
               ],
               overflow: Overflow.clip,
-            )
+            ),
+            SizedBox(height: 10,),
+            AnimatedOpacity(
+              opacity: opacityLevel,
+              duration: Duration(seconds: 3),
+              child: Container(
+                width: 100,
+                child: FlutterLogo(),
+              ),
+            ),
+            RaisedButton(
+              child: Text('Fade Logo'),
+              onPressed: _changeOpacity,
+            ),
           ],
         ),
       ),
