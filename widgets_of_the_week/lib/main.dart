@@ -12,39 +12,31 @@ class LogoApp extends StatefulWidget {
 class _LogoAppState extends State<LogoApp> {
   List<String> name = ['S', 'H', 'U', 'B', 'H', 'A', 'N', 'G', 'I'];
   Widget _myAnimatedWidget = FirstWidget();
+  double padValue = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: Text("Widgets Demo"),
+          ),
           body: Column(
             children: <Widget>[
               SizedBox(
                 height: 50,
               ),
-              Container(
-                height: 200,
-                child: ReorderableListView(
-                  onReorder: (oldIndex, newIndex) {
-                    setState(
-                          () {
-                        if (newIndex > oldIndex) {
-                          newIndex -= 1;
-                        }
-                        final String item = name.removeAt(oldIndex);
-                        name.insert(newIndex, item);
-                      },
-                    );
-                  },
-                  children: [
-                    for(var item in name)
-                      ListTile(
-                          key: ValueKey(item),
-                          title: Text('Item#$item')
-                      )
-                  ],
-                ),
-              ),
+           Container(
+             child: AnimatedPadding(
+
+               duration: Duration(seconds: 1),
+               curve: Curves.easeInOut,
+               padding: EdgeInsets.all(0),
+               child: Container(
+                 color: Colors.red,
+               ),
+             ),
+           ),
               SizedBox(
                 height: 10,
               ),
