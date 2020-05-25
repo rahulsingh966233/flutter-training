@@ -1,6 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+
+//https://fluttercentral.com/Articles/Post/1213/LimitedBox_widget_example_in_Flutter
 
 void main() => runApp(LogoApp());
 
