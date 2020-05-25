@@ -144,12 +144,17 @@ class _LogoAppState extends State<LogoApp> {
                 child: Text('Fade Logo'),
                 onPressed: _changeOpacity,
               ),
-            Container(
-              height: 200,
-              width: 100,
-              color: Colors.green,
-
-            )
+             Container(
+               alignment: Alignment.center,
+               child: Flexible(
+                 child: FractionallySizedBox(
+                   widthFactor: 0.3,
+                   child: RaisedButton(
+                     child: Text("hi"),
+                   ),
+                 ),
+               ),
+             )
             ],
           ),
         ),
