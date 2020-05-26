@@ -16,6 +16,7 @@ class _LogoAppState extends State<LogoApp> {
   double opacityLevel = 1.0;
   double rating = 1;
   var selectedRange = RangeValues(0.2, 0.8);
+  bool isUser = false;
 
   void _changeOpacity() {
     setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
@@ -277,7 +278,27 @@ class _LogoAppState extends State<LogoApp> {
                   backgroundColor: Colors.lightBlue[100],
                 ),
               ),
-            
+
+              SizedBox(height: 20,),
+              Container(
+                child: AnimatedCrossFade(
+                  crossFadeState: isUser ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                  duration: const Duration(seconds: 3),
+                  firstChild: Text("Hello"),
+                  secondChild: Text("Hey"),
+                ),
+              ),
+              FlatButton(
+                child: Text('Click'),
+                onPressed: () =>  setState(() {
+                  if(isUser == false){
+                    isUser = true;
+                  }else{
+                    isUser = false;
+                  }
+                }),
+              )
+
             ],
           ),
         ),
