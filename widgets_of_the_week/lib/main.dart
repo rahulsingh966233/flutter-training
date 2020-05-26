@@ -80,7 +80,8 @@ class _LogoAppState extends State<LogoApp> {
                 height: 100,
                 child: AnimatedSwitcher(
                   duration: const Duration(seconds: 2),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
                     return ScaleTransition(child: child, scale: animation);
                   },
                   child: _myAnimatedWidget,
@@ -99,14 +100,16 @@ class _LogoAppState extends State<LogoApp> {
               ),
               ConstrainedBox(
                 constraints: BoxConstraints(
-                    minHeight: 50, maxHeight: 100, maxWidth: 200, minWidth: 200),
+                    minHeight: 50,
+                    maxHeight: 100,
+                    maxWidth: 200,
+                    minWidth: 200),
                 child: RaisedButton(
                   child: Text(
                     'Tap Me',
                   ),
                 ),
               ),
-
               Stack(
                 children: <Widget>[
                   Container(
@@ -131,7 +134,9 @@ class _LogoAppState extends State<LogoApp> {
                 ],
                 overflow: Overflow.clip,
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               AnimatedOpacity(
                 opacity: opacityLevel,
                 duration: Duration(seconds: 3),
@@ -144,19 +149,21 @@ class _LogoAppState extends State<LogoApp> {
                 child: Text('Fade Logo'),
                 onPressed: _changeOpacity,
               ),
-             Container(
-               alignment: Alignment.center,
-               child: Flexible(
-                 child: FractionallySizedBox(
-                   widthFactor: 0.3,
-                   child: RaisedButton(
-                     child: Text("hi"),
-                   ),
-                 ),
-               ),
-             ),
-              Text("ListView",textAlign: TextAlign.center),
-              SizedBox(height: 10,),
+              Container(
+                alignment: Alignment.center,
+                child: Flexible(
+                  child: FractionallySizedBox(
+                    widthFactor: 0.3,
+                    child: RaisedButton(
+                      child: Text("hi"),
+                    ),
+                  ),
+                ),
+              ),
+              Text("ListView", textAlign: TextAlign.center),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 height: 200,
 //                color: Colors.lightBlue,
@@ -165,20 +172,34 @@ class _LogoAppState extends State<LogoApp> {
                   children: [
                     Container(
                       color: Colors.amber[600],
-                      child: ListTile(title: Text('Item1'),subtitle: Text("Title"), leading: Icon(Icons.verified_user), trailing:Icon(Icons.border_horizontal) ,),
+                      child: ListTile(
+                        title: Text('Item1'),
+                        subtitle: Text("Title"),
+                        leading: Icon(Icons.verified_user),
+                        trailing: Icon(Icons.border_horizontal),
+                      ),
                     ),
                     Container(
                       color: Colors.amber[500],
-                      child:ListTile(title: Text('Item#2'),subtitle: Text("Title"), leading: Icon(Icons.verified_user), trailing:Icon(Icons.border_horizontal) ,),
+                      child: ListTile(
+                        title: Text('Item#2'),
+                        subtitle: Text("Title"),
+                        leading: Icon(Icons.verified_user),
+                        trailing: Icon(Icons.border_horizontal),
+                      ),
                     ),
                     Container(
                       color: Colors.amber[100],
-                      child: ListTile(title: Text('Item3'),subtitle: Text("Title"), leading: Icon(Icons.verified_user), trailing:Icon(Icons.border_horizontal) ,),
+                      child: ListTile(
+                        title: Text('Item3'),
+                        subtitle: Text("Title"),
+                        leading: Icon(Icons.verified_user),
+                        trailing: Icon(Icons.border_horizontal),
+                      ),
                     )
                   ],
                 ),
               )
-
             ],
           ),
         ),
