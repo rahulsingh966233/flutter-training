@@ -273,8 +273,11 @@ class _LogoAppState extends State<LogoApp> {
                     FlatButton(child: Text("No"),),
                     FlatButton(child: Text("Yes"),textColor: Colors.blue,)
                   ],
+                  elevation: 24.0,
+                  backgroundColor: Colors.lightBlue[100],
                 ),
-              )
+              ),
+            
             ],
           ),
         ),
