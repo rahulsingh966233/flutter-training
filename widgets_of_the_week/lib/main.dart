@@ -30,6 +30,18 @@ class _LogoAppState extends State<LogoApp> {
         appBar: AppBar(
           title: Text("Widgets Demo"),
         ),
+        drawer: Drawer(child: ListView(
+          children: [
+            Container(
+              child: Text('header',),
+              height: 100,
+              color: Colors.green,
+            ),
+            ListTile(title: Text('Option 1'),),
+            ListTile(title: Text('Option 1'),),
+            ListTile(title: Text('Option 1'),)
+          ],
+        ),),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
