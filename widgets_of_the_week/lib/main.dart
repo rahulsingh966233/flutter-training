@@ -284,8 +284,8 @@ class _LogoAppState extends State<LogoApp> {
                 child: AnimatedCrossFade(
                   crossFadeState: isUser ? CrossFadeState.showFirst : CrossFadeState.showSecond,
                   duration: const Duration(seconds: 3),
-                  firstChild: Text("Hello"),
-                  secondChild: Text("Hey"),
+                  firstChild: Text("Hello, GoodMorning"),
+                  secondChild: Text("Hey, Good Noon"),
                 ),
               ),
               FlatButton(
