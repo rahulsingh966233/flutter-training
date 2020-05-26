@@ -321,6 +321,8 @@ class _LogoAppState extends State<LogoApp> {
                     Icon(Icons.supervised_user_circle),
                     Icon(Icons.shop),
                   ],
+                  selectedBorderColor: Colors.green,
+                  selectedColor: Colors.pink[100],
                   isSelected: _selectOptions,
                   onPressed: (int index){
                     setState(() {
