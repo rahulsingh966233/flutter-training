@@ -216,10 +216,8 @@ class _LogoAppState extends State<LogoApp> {
                 child: SelectableText(
                   'My Selecatble Text',
                   showCursor: false,
-                  cursorColor: Colors.green,
-                  cursorWidth: 5,
                   toolbarOptions: ToolbarOptions(copy: true,selectAll: true,paste: true),
-                  cursorRadius: Radius.circular(5),
+                  
                 ),
               )
             ],
