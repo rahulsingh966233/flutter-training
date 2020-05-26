@@ -283,6 +283,9 @@ class _LogoAppState extends State<LogoApp> {
               Container(
                 child: AnimatedCrossFade(
                   crossFadeState: isUser ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                  firstCurve: Curves.easeOut,
+                  secondCurve: Curves.easeIn,
+                  sizeCurve: Curves.bounceOut,
                   duration: const Duration(seconds: 3),
                   firstChild: Text("Hello, GoodMorning"),
                   secondChild: Text("Hey, Good Noon"),
@@ -297,8 +300,7 @@ class _LogoAppState extends State<LogoApp> {
                     isUser = false;
                   }
                 }),
-              )
-
+              ),
             ],
           ),
         ),
