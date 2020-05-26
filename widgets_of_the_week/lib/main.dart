@@ -504,7 +504,7 @@ class _LogoAppState extends State<LogoApp> {
                     ],
                     tileMode: TileMode.mirror
                   ).createShader(bounds),
-                  child: const Text('Burning Text!!',style: TextStyle(color: Colors.white),),
+                  child: const Text('Burning Text!!',style: TextStyle(color: Colors.white,fontSize: 30),),
                 ),
               ),
             ],
