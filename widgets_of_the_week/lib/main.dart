@@ -507,6 +507,14 @@ class _LogoAppState extends State<LogoApp> {
                   child: const Text('Burning Text!!',style: TextStyle(color: Colors.white,fontSize: 30),),
                 ),
               ),
+              SizedBox(height: 20,),
+              Container(
+                height: 100,
+                decoration: ShapeDecoration(
+                  shape: CircleBorder(),
+                  color: Colors.blue
+                ),
+              )
             ],
           ),
         ),
