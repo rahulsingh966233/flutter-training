@@ -14,7 +14,7 @@ class _LogoAppState extends State<LogoApp> {
   Widget _myAnimatedWidget = FirstWidget();
   double padValue = 0;
   double opacityLevel = 1.0;
-
+  double rating = 1;
   void _changeOpacity() {
     setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
   }
@@ -105,7 +105,7 @@ class _LogoAppState extends State<LogoApp> {
                     maxWidth: 200,
                     minWidth: 200),
                 child: RaisedButton(
-                  onPressed: (){},
+                  onPressed: () {},
                   child: Text(
                     'Tap Me',
                   ),
@@ -156,7 +156,7 @@ class _LogoAppState extends State<LogoApp> {
                   child: FractionallySizedBox(
                     widthFactor: 0.3,
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: () {},
                       child: Text("hi"),
                     ),
                   ),
@@ -211,13 +211,31 @@ class _LogoAppState extends State<LogoApp> {
                 height: 200.0,
                 transform: Matrix4.rotationZ(0.10),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 child: SelectableText(
                   'My Selecatble Text',
                   showCursor: false,
-                  toolbarOptions: ToolbarOptions(copy: true,selectAll: true,paste: true),
+                  toolbarOptions:
+                      ToolbarOptions(copy: true, selectAll: true, paste: true),
                   onTap: () => print('Tapped'),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Slider(
+                  value: rating,
+                  onChanged: (newRating) {
+                    setState(() => rating = newRating);
+                  },
+                  min: 0,
+                  max: 100,
+                  divisions: 6,
+                  label: "$rating",
                 ),
               )
             ],
