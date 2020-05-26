@@ -301,6 +301,13 @@ class _LogoAppState extends State<LogoApp> {
                   }
                 }),
               ),
+              SizedBox(height: 20,),
+              Container(
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(Colors.green, BlendMode.saturation),
+                  child: Image.asset('assets/a.png'),
+                ),
+              )
             ],
           ),
         ),
