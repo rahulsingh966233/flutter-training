@@ -490,7 +490,23 @@ class _LogoAppState extends State<LogoApp> {
                     children: listtiles, //List of widgets
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 20,),
+              Container(
+                child: ShaderMask(
+                  shaderCallback: (bounds) =>
+                  RadialGradient(
+                    center: Alignment.topLeft,
+                    radius: 1.0,
+                    colors: [
+                      Colors.green,
+                      Colors.deepOrange
+                    ],
+                    tileMode: TileMode.mirror
+                  ).createShader(bounds),
+                  child: const Text('Burning Text!!',style: TextStyle(color: Colors.white),),
+                ),
+              ),
             ],
           ),
         ),
