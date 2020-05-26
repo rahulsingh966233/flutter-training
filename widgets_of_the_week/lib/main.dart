@@ -203,6 +203,13 @@ class _LogoAppState extends State<LogoApp> {
                     )
                   ],
                 ),
+              ),
+              Container(
+                child: Text("Container Demo, transform prop"),
+                color: Colors.lightBlue,
+                width: 200.0,
+                height: 200.0,
+                transform: Matrix4.rotationZ(0.10),
               )
             ],
           ),
