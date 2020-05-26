@@ -522,8 +522,9 @@ class _LogoAppState extends State<LogoApp> {
                   backgroundColor: Colors.green,
                 ),
               ),
-              
+
               CircularProgressIndicator(
+                strokeWidth: 2,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
               ),
 
