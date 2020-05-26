@@ -565,6 +565,26 @@ class _LogoAppState extends State<LogoApp> {
                 strokeWidth: 2,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
               ),
+              Divider(
+                thickness: 1,
+                color: Colors.grey,
+                indent: 80,
+                endIndent: 80,
+              ),
+              Container(
+                  child: IgnorePointer(
+                ignoring: true,
+                child: RaisedButton(
+                  onPressed: () => print("IgnorePoint"),
+                  child: Text("Unclickable button"),
+                ),
+              )),
+              AbsorbPointer(
+                child: RaisedButton(
+                  onPressed: () => print("AbsorbPoint"),
+                  child: Text("Unclickable button"),
+                ),
+              ),
             ],
           ),
         ),
