@@ -585,6 +585,12 @@ class _LogoAppState extends State<LogoApp> {
                   child: Text("Unclickable button"),
                 ),
               ),
+              SizedBox(height: 20,),
+              Text('CupertinoActivityIndicator'),
+              Container(
+                height: 50,
+                child: CupertinoActivityIndicator(),
+              )
             ],
           ),
         ),
