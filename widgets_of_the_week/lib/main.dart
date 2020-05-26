@@ -512,6 +512,8 @@ class _LogoAppState extends State<LogoApp> {
               Divider(
                 thickness: 1,
                 color: Colors.grey,
+                indent: 80,
+                endIndent: 80,
               ),
               Container(
                 child: ShaderMask(
@@ -533,6 +535,8 @@ class _LogoAppState extends State<LogoApp> {
               Divider(
                 thickness: 1,
                 color: Colors.grey,
+                indent: 80,
+                endIndent: 80,
               ),
               Container(
                 height: 100,
@@ -542,6 +546,8 @@ class _LogoAppState extends State<LogoApp> {
               Divider(
                 thickness: 1,
                 color: Colors.grey,
+                indent: 80,
+                endIndent: 80,
               ),
               Container(
                 height: 10,
@@ -552,6 +558,8 @@ class _LogoAppState extends State<LogoApp> {
               Divider(
                 thickness: 1,
                 color: Colors.grey,
+                indent: 80,
+                endIndent: 80,
               ),
               CircularProgressIndicator(
                 strokeWidth: 2,
