@@ -514,7 +514,19 @@ class _LogoAppState extends State<LogoApp> {
                   shape: CircleBorder(),
                   color: Colors.blue
                 ),
-              )
+              ),
+              SizedBox(height: 20,),
+              Container(
+                height: 10,
+                child:  LinearProgressIndicator(
+                  backgroundColor: Colors.green,
+                ),
+              ),
+              
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+              ),
+
             ],
           ),
         ),
