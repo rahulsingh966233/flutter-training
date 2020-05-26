@@ -245,46 +245,57 @@ class _LogoAppState extends State<LogoApp> {
               Container(
                 child: RangeSlider(
                   values: selectedRange,
-                  onChanged: (RangeValues newRange){
-                    setState(()=> selectedRange = newRange);
+                  onChanged: (RangeValues newRange) {
+                    setState(() => selectedRange = newRange);
                   },
                   min: 0.0,
                   max: 2.0,
                   divisions: 10,
-                  labels: RangeLabels('${selectedRange.start}', '${selectedRange.end}'),
+                  labels: RangeLabels(
+                      '${selectedRange.start}', '${selectedRange.end}'),
                 ),
               ),
               Container(
-                child: CupertinoSlider(
-                  value: rating,
-                  min: 0.0,
-                  max: 100.0,
-                  onChanged: (value){
-                    setState(() {
-                      rating = value.roundToDouble();
-                    });
-                  },
-                )
+                  child: CupertinoSlider(
+                value: rating,
+                min: 0.0,
+                max: 100.0,
+                onChanged: (value) {
+                  setState(() {
+                    rating = value.roundToDouble();
+                  });
+                },
+              )),
+              SizedBox(
+                height: 20,
               ),
-              SizedBox(height: 20,),
               Container(
                 child: AlertDialog(
                   title: Text("Accept?"),
                   content: Text("Do you Accept?"),
                   actions: [
-                    FlatButton(child: Text("No"),
-                    onPressed: (){},),
-                    FlatButton(child: Text("Yes"),textColor: Colors.blue,onPressed: (){},)
+                    FlatButton(
+                      child: Text("No"),
+                      onPressed: () {},
+                    ),
+                    FlatButton(
+                      child: Text("Yes"),
+                      textColor: Colors.blue,
+                      onPressed: () {},
+                    )
                   ],
                   elevation: 24.0,
                   backgroundColor: Colors.lightBlue[100],
                 ),
               ),
-
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 child: AnimatedCrossFade(
-                  crossFadeState: isUser ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                  crossFadeState: isUser
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
                   firstCurve: Curves.easeOut,
                   secondCurve: Curves.easeIn,
                   sizeCurve: Curves.bounceOut,
@@ -295,48 +306,84 @@ class _LogoAppState extends State<LogoApp> {
               ),
               FlatButton(
                 child: Text('Click'),
-                onPressed: () =>  setState(() {
-                  if(isUser == false){
+                onPressed: () => setState(() {
+                  if (isUser == false) {
                     isUser = true;
-                  }else{
+                  } else {
                     isUser = false;
                   }
                 }),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(Colors.green, BlendMode.saturation),
+                  colorFilter:
+                      ColorFilter.mode(Colors.green, BlendMode.saturation),
                   child: Image.asset('assets/a.png'),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Text("ToggleButtons"),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 child: ToggleButtons(
                   children: [
-                    Icon(Icons.local_cafe,color: Colors.green,),
-                    Icon(Icons.wb_incandescent,color: Colors.yellow[900],),
-                    Icon(Icons.supervised_user_circle,color: Colors.cyan[900],),
+                    Icon(
+                      Icons.local_cafe,
+                      color: Colors.green,
+                    ),
+                    Icon(
+                      Icons.wb_incandescent,
+                      color: Colors.yellow[900],
+                    ),
+                    Icon(
+                      Icons.supervised_user_circle,
+                      color: Colors.cyan[900],
+                    ),
                     Icon(Icons.shop),
                   ],
                   selectedBorderColor: Colors.deepOrange,
-                  fillColor: Colors.lightGreenAccent,
+//                  fillColor: Colors.lightGreenAccent,
                   renderBorder: true,
-                  borderRadius: BorderRadius.circular(30),
-                  borderWidth: 5,
-                  borderColor: Colors.grey,
+                  selectedColor: Colors.pink[100],
+//                  borderRadius: BorderRadius.circular(30),
+//                  borderWidth: 5,
+//                  borderColor: Colors.grey,
+                  highlightColor: Colors.teal,
+                  splashColor: Colors.purple,
                   isSelected: _selectOptions,
-                  onPressed: (int index){
+                  disabledBorderColor: Colors.blueGrey,
+                  hoverColor: Colors.redAccent,
+                  onPressed: (int index) {
                     setState(() {
-                      _selectOptions[index]  = !_selectOptions[index];
+                      _selectOptions[index] = !_selectOptions[index];
                     });
                   },
                 ),
               ),
-              SizedBox(height: 20,),
-              
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Image.network(
+                  'https://images.homify.com/images/a_0,c_fill,f_auto,h_632,q_auto,w_632/v1490006803/p/photo/image/1913408/Trilok_ji_Cam-7/asian-living-room-photos-by-homify.jpg',
+                  loadingBuilder: (context, child, progress) {
+                    return progress == null
+                        ? child
+                        : LinearProgressIndicator(
+                            backgroundColor: Colors.blue,
+                          );
+                  },
+                  semanticLabel: 'Interior',
+                  width: 200,
+                ),
+              )
             ],
           ),
         ),
