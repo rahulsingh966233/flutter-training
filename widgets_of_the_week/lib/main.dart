@@ -418,7 +418,10 @@ class _LogoAppState extends State<LogoApp> {
                   colorFilter:
                       ColorFilter.mode(Colors.white, BlendMode.saturation),
                   child: ClipOval(
-                    child: Image.asset('assets/a.png',fit: BoxFit.cover,),
+                    child: Image.asset(
+                      'assets/a.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -588,7 +591,9 @@ class _LogoAppState extends State<LogoApp> {
                   child: Text("Unclickable button"),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Text('CupertinoActivityIndicator'),
               Container(
                 height: 50,
