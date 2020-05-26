@@ -413,10 +413,13 @@ class _LogoAppState extends State<LogoApp> {
                 height: 20,
               ),
               Container(
+                height: 200,
                 child: ColorFiltered(
                   colorFilter:
-                      ColorFilter.mode(Colors.green, BlendMode.saturation),
-                  child: Image.asset('assets/a.png'),
+                      ColorFilter.mode(Colors.white, BlendMode.saturation),
+                  child: ClipOval(
+                    child: Image.asset('assets/a.png',fit: BoxFit.cover,),
+                  ),
                 ),
               ),
               SizedBox(
