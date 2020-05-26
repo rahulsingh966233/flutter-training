@@ -33,10 +33,14 @@ class _LogoAppState extends State<LogoApp> {
         drawer: Drawer(child: ListView(
           children: [
             Container(
-              child: Text('header',),
-              height: 100,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: Text('header',)),
+              ),
+              height: 50,
               color: Colors.green,
             ),
+            Divider(thickness: 4,color: Colors.black,),
             ListTile(title: Text('Option 1'),),
             ListTile(title: Text('Option 1'),),
             ListTile(title: Text('Option 1'),)
