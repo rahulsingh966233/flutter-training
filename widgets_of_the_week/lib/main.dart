@@ -598,6 +598,16 @@ class _LogoAppState extends State<LogoApp> {
               Container(
                 height: 50,
                 child: CupertinoActivityIndicator(),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: OutlineButton(
+                  child: Text("Outline Button"),
+                  highlightedBorderColor: Colors.green,
+                  onPressed: () {},
+                ),
               )
             ],
           ),
