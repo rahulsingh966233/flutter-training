@@ -318,11 +318,15 @@ class _LogoAppState extends State<LogoApp> {
                   children: [
                     Icon(Icons.local_cafe,color: Colors.green,),
                     Icon(Icons.wb_incandescent,color: Colors.yellow[900],),
-                    Icon(Icons.supervised_user_circle),
+                    Icon(Icons.supervised_user_circle,color: Colors.cyan[900],),
                     Icon(Icons.shop),
                   ],
-                  selectedBorderColor: Colors.green,
-                  selectedColor: Colors.pink[100],
+                  selectedBorderColor: Colors.deepOrange,
+                  fillColor: Colors.lightGreenAccent,
+                  renderBorder: true,
+                  borderRadius: BorderRadius.circular(30),
+                  borderWidth: 5,
+                  borderColor: Colors.grey,
                   isSelected: _selectOptions,
                   onPressed: (int index){
                     setState(() {
@@ -330,7 +334,9 @@ class _LogoAppState extends State<LogoApp> {
                     });
                   },
                 ),
-              )
+              ),
+              SizedBox(height: 20,),
+              
             ],
           ),
         ),
