@@ -19,6 +19,71 @@ class _LogoAppState extends State<LogoApp> {
   bool isUser = false;
   List<bool> _selectOptions = List.generate(4, (_) => false);
 
+  final FixedExtentScrollController _controller = FixedExtentScrollController();
+
+  List<Widget> listtiles = [
+    ListTile(
+      leading: Icon(Icons.portrait),
+      title: Text("Portrait"),
+      subtitle: Text("Beautiful View..!"),
+      trailing: Icon(Icons.arrow_forward_ios),
+    ),
+    ListTile(
+      leading: Icon(Icons.landscape),
+      title: Text("LandScape"),
+      subtitle: Text("Beautiful View..!"),
+      trailing: Icon(Icons.remove),
+    ),
+    ListTile(
+      leading: Icon(Icons.map),
+      title: Text("Map"),
+      subtitle: Text("Map View..!"),
+      trailing: Icon(Icons.wb_sunny),
+    ),
+    ListTile(
+      leading: Icon(Icons.landscape),
+      title: Text("LandScape"),
+      subtitle: Text("Wonderful View..!"),
+      trailing: Icon(Icons.wb_sunny),
+    ),
+    ListTile(
+      leading: Icon(Icons.list),
+      title: Text("List Example"),
+      subtitle: Text("List Wheel Scroll view .!"),
+      trailing: Icon(Icons.cloud),
+    ),
+    ListTile(
+      leading: Icon(Icons.settings),
+      title: Text("Settings"),
+      subtitle: Text("Change the setting..!"),
+      trailing: Icon(Icons.portrait),
+    ),
+    ListTile(
+      leading: Icon(Icons.event),
+      title: Text("Add data"),
+      subtitle: Text("Data View..!"),
+      trailing: Icon(Icons.add),
+    ),
+    ListTile(
+      leading: Icon(Icons.landscape),
+      title: Text("LandScape"),
+      subtitle: Text("Beautiful View..!"),
+      trailing: Icon(Icons.wb_sunny),
+    ),
+    ListTile(
+      leading: Icon(Icons.email),
+      title: Text("Email"),
+      subtitle: Text("Check Email..!"),
+      trailing: Icon(Icons.arrow_forward),
+    ),
+    ListTile(
+      leading: Icon(Icons.games),
+      title: Text("Games"),
+      subtitle: Text("Play Games..!"),
+      trailing: Icon(Icons.zoom_out_map),
+    ),
+  ];
+
   void _changeOpacity() {
     setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
   }
@@ -27,7 +92,6 @@ class _LogoAppState extends State<LogoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-
         appBar: AppBar(
           title: Text("Widgets Demo"),
         ),
@@ -412,6 +476,21 @@ class _LogoAppState extends State<LogoApp> {
                       ));
                     }),
               ),
+              SizedBox(height: 20,),
+              Text("ListWheelScrollView"),
+              Container(
+                height: 500,
+                child: Center(
+                  child: ListWheelScrollView(
+                    controller: _controller,
+                    itemExtent: 80,
+                    magnification: 1.1,
+                    useMagnifier: true,
+                    physics: FixedExtentScrollPhysics(),
+                    children: listtiles, //List of widgets
+                  ),
+                ),
+              )
             ],
           ),
         ),
