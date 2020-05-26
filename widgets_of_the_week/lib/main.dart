@@ -105,6 +105,7 @@ class _LogoAppState extends State<LogoApp> {
                     maxWidth: 200,
                     minWidth: 200),
                 child: RaisedButton(
+                  onPressed: (){},
                   child: Text(
                     'Tap Me',
                   ),
@@ -155,6 +156,7 @@ class _LogoAppState extends State<LogoApp> {
                   child: FractionallySizedBox(
                     widthFactor: 0.3,
                     child: RaisedButton(
+                      onPressed: (){},
                       child: Text("hi"),
                     ),
                   ),
@@ -194,6 +196,7 @@ class _LogoAppState extends State<LogoApp> {
                       child: ListTile(
                         title: Text('Item3'),
                         subtitle: Text("Title"),
+                        selected: true,
                         leading: Icon(Icons.verified_user),
                         trailing: Icon(Icons.border_horizontal),
                       ),
