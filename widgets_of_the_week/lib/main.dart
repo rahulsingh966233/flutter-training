@@ -95,22 +95,36 @@ class _LogoAppState extends State<LogoApp> {
         appBar: AppBar(
           title: Text("Widgets Demo"),
         ),
-        drawer: Drawer(child: ListView(
-          children: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(child: Text('header',)),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                      child: Text(
+                    'header',
+                  )),
+                ),
+                height: 50,
+                color: Colors.green,
               ),
-              height: 50,
-              color: Colors.green,
-            ),
-            Divider(thickness: 4,color: Colors.black,),
-            ListTile(title: Text('Option 1'),),
-            ListTile(title: Text('Option 1'),),
-            ListTile(title: Text('Option 1'),)
-          ],
-        ),),
+              Divider(
+                thickness: 4,
+                color: Colors.black,
+              ),
+              ListTile(
+                title: Text('Option 1'),
+              ),
+              ListTile(
+                title: Text('Option 1'),
+              ),
+              ListTile(
+                title: Text('Option 1'),
+              )
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -336,7 +350,6 @@ class _LogoAppState extends State<LogoApp> {
                       '${selectedRange.start}', '${selectedRange.end}'),
                 ),
               ),
-
               Container(
                   child: CupertinoSlider(
                 value: rating,
@@ -476,7 +489,9 @@ class _LogoAppState extends State<LogoApp> {
                       ));
                     }),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Text("ListWheelScrollView"),
               Container(
                 height: 500,
@@ -491,43 +506,57 @@ class _LogoAppState extends State<LogoApp> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                thickness: 1,
+                color: Colors.grey,
+              ),
               Container(
                 child: ShaderMask(
-                  shaderCallback: (bounds) =>
-                  RadialGradient(
-                    center: Alignment.topLeft,
-                    radius: 1.0,
-                    colors: [
-                      Colors.green,
-                      Colors.deepOrange
-                    ],
-                    tileMode: TileMode.mirror
-                  ).createShader(bounds),
-                  child: const Text('Burning Text!!',style: TextStyle(color: Colors.white,fontSize: 30),),
+                  shaderCallback: (bounds) => RadialGradient(
+                          center: Alignment.topLeft,
+                          radius: 1.0,
+                          colors: [Colors.green, Colors.deepOrange],
+                          tileMode: TileMode.mirror)
+                      .createShader(bounds),
+                  child: const Text(
+                    'Burning Text!!',
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                thickness: 1,
+                color: Colors.grey,
+              ),
               Container(
                 height: 100,
-                decoration: ShapeDecoration(
-                  shape: CircleBorder(),
-                  color: Colors.blue
-                ),
+                decoration:
+                    ShapeDecoration(shape: CircleBorder(), color: Colors.blue),
               ),
-              SizedBox(height: 20,),
+              Divider(
+                thickness: 1,
+                color: Colors.grey,
+              ),
               Container(
                 height: 10,
-                child:  LinearProgressIndicator(
+                child: LinearProgressIndicator(
                   backgroundColor: Colors.green,
                 ),
               ),
-
+              Divider(
+                thickness: 1,
+                color: Colors.grey,
+              ),
               CircularProgressIndicator(
                 strokeWidth: 2,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
               ),
-
             ],
           ),
         ),
