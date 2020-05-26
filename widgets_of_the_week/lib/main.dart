@@ -27,6 +27,7 @@ class _LogoAppState extends State<LogoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+
         appBar: AppBar(
           title: Text("Widgets Demo"),
         ),
@@ -271,6 +272,7 @@ class _LogoAppState extends State<LogoApp> {
                       '${selectedRange.start}', '${selectedRange.end}'),
                 ),
               ),
+
               Container(
                   child: CupertinoSlider(
                 value: rating,
@@ -399,7 +401,17 @@ class _LogoAppState extends State<LogoApp> {
                   semanticLabel: 'Interior',
                   width: 200,
                 ),
-              )
+              ),
+              Builder(
+                builder: (context) => RaisedButton(
+                    child: Text('Show Snackbar'),
+                    onPressed: () {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text('Show Snackbar'),
+                        duration: Duration(seconds: 3),
+                      ));
+                    }),
+              ),
             ],
           ),
         ),
