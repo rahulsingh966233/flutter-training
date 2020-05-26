@@ -217,7 +217,7 @@ class _LogoAppState extends State<LogoApp> {
                   'My Selecatble Text',
                   showCursor: false,
                   toolbarOptions: ToolbarOptions(copy: true,selectAll: true,paste: true),
-                  
+                  onTap: () => print('Tapped'),
                 ),
               )
             ],
