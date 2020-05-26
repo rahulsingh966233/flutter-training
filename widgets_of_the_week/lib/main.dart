@@ -263,6 +263,17 @@ class _LogoAppState extends State<LogoApp> {
                     });
                   },
                 )
+              ),
+              SizedBox(height: 20,),
+              Container(
+                child: AlertDialog(
+                  title: Text("Accept?"),
+                  content: Text("Do you Accept?"),
+                  actions: [
+                    FlatButton(child: Text("No"),),
+                    FlatButton(child: Text("Yes"),textColor: Colors.blue,)
+                  ],
+                ),
               )
             ],
           ),
