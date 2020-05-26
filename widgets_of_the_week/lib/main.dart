@@ -210,6 +210,17 @@ class _LogoAppState extends State<LogoApp> {
                 width: 200.0,
                 height: 200.0,
                 transform: Matrix4.rotationZ(0.10),
+              ),
+              SizedBox(height: 20,),
+              Container(
+                child: SelectableText(
+                  'My Selecatble Text',
+                  showCursor: false,
+                  cursorColor: Colors.green,
+                  cursorWidth: 5,
+                  toolbarOptions: ToolbarOptions(copy: true,selectAll: true,paste: true),
+                  cursorRadius: Radius.circular(5),
+                ),
               )
             ],
           ),
