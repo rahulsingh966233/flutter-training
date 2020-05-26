@@ -164,19 +164,16 @@ class _LogoAppState extends State<LogoApp> {
                   padding: const EdgeInsets.all(10),
                   children: [
                     Container(
-                      height: 30,
                       color: Colors.amber[600],
-                      child: Text('Shubhhhhhhhhhhhh'),
+                      child: ListTile(title: Text('Item1'),subtitle: Text("Title"), leading: Icon(Icons.verified_user), trailing:Icon(Icons.border_horizontal) ,),
                     ),
                     Container(
-                      height: 30,
                       color: Colors.amber[500],
-                      child: Text('text 2222222'),
+                      child:ListTile(title: Text('Item#2'),subtitle: Text("Title"), leading: Icon(Icons.verified_user), trailing:Icon(Icons.border_horizontal) ,),
                     ),
                     Container(
-                      height: 30,
                       color: Colors.amber[100],
-                      child: Text('Textttttttt3'),
+                      child: ListTile(title: Text('Item3'),subtitle: Text("Title"), leading: Icon(Icons.verified_user), trailing:Icon(Icons.border_horizontal) ,),
                     )
                   ],
                 ),
