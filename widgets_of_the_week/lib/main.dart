@@ -316,8 +316,8 @@ class _LogoAppState extends State<LogoApp> {
               Container(
                 child: ToggleButtons(
                   children: [
-                    Icon(Icons.local_cafe),
-                    Icon(Icons.wb_incandescent),
+                    Icon(Icons.local_cafe,color: Colors.green,),
+                    Icon(Icons.wb_incandescent,color: Colors.yellow[900],),
                     Icon(Icons.supervised_user_circle),
                     Icon(Icons.shop),
                   ],
