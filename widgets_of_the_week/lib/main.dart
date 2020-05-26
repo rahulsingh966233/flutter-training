@@ -184,6 +184,7 @@ class _LogoAppState extends State<LogoApp> {
                       child: ListTile(
                         title: Text('Item#2'),
                         subtitle: Text("Title"),
+                        enabled: false,
                         leading: Icon(Icons.verified_user),
                         trailing: Icon(Icons.border_horizontal),
                       ),
