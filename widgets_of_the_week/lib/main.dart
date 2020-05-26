@@ -17,6 +17,7 @@ class _LogoAppState extends State<LogoApp> {
   double rating = 1;
   var selectedRange = RangeValues(0.2, 0.8);
   bool isUser = false;
+  List<bool> _selectOptions = List.generate(4, (_) => false);
 
   void _changeOpacity() {
     setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
@@ -271,8 +272,9 @@ class _LogoAppState extends State<LogoApp> {
                   title: Text("Accept?"),
                   content: Text("Do you Accept?"),
                   actions: [
-                    FlatButton(child: Text("No"),),
-                    FlatButton(child: Text("Yes"),textColor: Colors.blue,)
+                    FlatButton(child: Text("No"),
+                    onPressed: (){},),
+                    FlatButton(child: Text("Yes"),textColor: Colors.blue,onPressed: (){},)
                   ],
                   elevation: 24.0,
                   backgroundColor: Colors.lightBlue[100],
@@ -306,6 +308,25 @@ class _LogoAppState extends State<LogoApp> {
                 child: ColorFiltered(
                   colorFilter: ColorFilter.mode(Colors.green, BlendMode.saturation),
                   child: Image.asset('assets/a.png'),
+                ),
+              ),
+              SizedBox(height: 20,),
+              Text("ToggleButtons"),
+              SizedBox(height: 10,),
+              Container(
+                child: ToggleButtons(
+                  children: [
+                    Icon(Icons.local_cafe),
+                    Icon(Icons.wb_incandescent),
+                    Icon(Icons.supervised_user_circle),
+                    Icon(Icons.shop),
+                  ],
+                  isSelected: _selectOptions,
+                  onPressed: (int index){
+                    setState(() {
+                      _selectOptions[index]  = !_selectOptions[index];
+                    });
+                  },
                 ),
               )
             ],
