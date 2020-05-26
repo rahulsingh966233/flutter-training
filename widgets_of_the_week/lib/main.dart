@@ -15,6 +15,8 @@ class _LogoAppState extends State<LogoApp> {
   double padValue = 0;
   double opacityLevel = 1.0;
   double rating = 1;
+  var selectedRange = RangeValues(0.2, 0.8);
+
   void _changeOpacity() {
     setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
   }
@@ -237,6 +239,30 @@ class _LogoAppState extends State<LogoApp> {
                   divisions: 6,
                   label: "$rating",
                 ),
+              ),
+              Container(
+                child: RangeSlider(
+                  values: selectedRange,
+                  onChanged: (RangeValues newRange){
+                    setState(()=> selectedRange = newRange);
+                  },
+                  min: 0.0,
+                  max: 2.0,
+                  divisions: 10,
+                  labels: RangeLabels('${selectedRange.start}', '${selectedRange.end}'),
+                ),
+              ),
+              Container(
+                child: CupertinoSlider(
+                  value: rating,
+                  min: 0.0,
+                  max: 100.0,
+                  onChanged: (value){
+                    setState(() {
+                      rating = value.roundToDouble();
+                    });
+                  },
+                )
               )
             ],
           ),
