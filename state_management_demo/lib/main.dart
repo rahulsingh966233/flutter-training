@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
 class MyAppBody extends StatelessWidget {
   Widget titleSection = Container(
-    padding: const EdgeInsets.all(32),
+    padding: const EdgeInsets.all(30),
     child: Row(
       children: [
         Expanded(
