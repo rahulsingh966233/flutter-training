@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
 class MyAppBody extends StatelessWidget {
   Widget titleSection = Container(
-    padding: const EdgeInsets.all(30),
+    padding: const EdgeInsets.all(32),
     child: Row(
       children: [
         Expanded(
@@ -29,6 +29,7 @@ class MyAppBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              /*2*/
               Container(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
@@ -47,7 +48,6 @@ class MyAppBody extends StatelessWidget {
             ],
           ),
         ),
-        /*3*/
         Icon(
           Icons.star,
           color: Colors.red[500],
@@ -56,6 +56,7 @@ class MyAppBody extends StatelessWidget {
       ],
     ),
   );
+
   @override
   Widget build(BuildContext context) {
     return Column(
