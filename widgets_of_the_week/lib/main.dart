@@ -14,7 +14,15 @@ class _LogoAppState extends State<LogoApp> {
   List<String> name = ['S', 'H', 'U', 'B', 'H', 'A', 'N', 'G', 'I'];
   Widget _myAnimatedWidget = FirstWidget();
   double padValue = 0;
+  double _ironManAlignment = 50;
   double opacityLevel = 1.0;
+  bool _first = true;
+
+  double _left = 20;
+  double _top = 20;
+  double _right = 20;
+  double _bottom = 20;
+
   double rating = 1;
   var selectedRange = RangeValues(0.2, 0.8);
   bool isUser = false;
@@ -614,10 +622,50 @@ class _LogoAppState extends State<LogoApp> {
                 title: const Text('Animate Slowly'),
                 value: timeDilation != 1.0,
                 onChanged: (bool value) {
-                  setState(() { timeDilation = value ? 10.0 : 1.0; });
+                  setState(() {
+                    timeDilation = value ? 10.0 : 1.0;
+                  });
                 },
                 secondary: const Icon(Icons.hourglass_empty),
               ),
+              Container(
+                height: 200,
+                child: Stack(
+                  children: <Widget>[
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.fastOutSlowIn,
+                      left: _left,
+                      top: _top,
+                      right: _right,
+                      bottom: _bottom,
+                      child: Container(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional.bottomCenter,
+                child: RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _left   = _first ?  10 : 20;
+                      _top    = _first ?  70 : 20;
+                      _right  = _first ?  10 : 20;
+                      _bottom = _first ?  70 : 20;
+                      _first = !_first;
+                    });
+                  },
+                  child: Text('Go'),
+                  color: Colors.red,
+                  textColor: Colors.yellowAccent,
+                  shape: BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                ),
+              ),
+
             ],
           ),
         ),
