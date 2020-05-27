@@ -22,7 +22,7 @@ class _LogoAppState extends State<LogoApp> {
   double _top = 20;
   double _right = 20;
   double _bottom = 20;
-
+  int _index = 0;
   double rating = 1;
   var selectedRange = RangeValues(0.2, 0.8);
   bool isUser = false;
@@ -651,10 +651,10 @@ class _LogoAppState extends State<LogoApp> {
                 child: RaisedButton(
                   onPressed: () {
                     setState(() {
-                      _left   = _first ?  10 : 20;
-                      _top    = _first ?  70 : 20;
-                      _right  = _first ?  10 : 20;
-                      _bottom = _first ?  70 : 20;
+                      _left = _first ? 10 : 20;
+                      _top = _first ? 70 : 20;
+                      _right = _first ? 10 : 20;
+                      _bottom = _first ? 70 : 20;
                       _first = !_first;
                     });
                   },
@@ -665,7 +665,64 @@ class _LogoAppState extends State<LogoApp> {
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 300,
+                child: IndexedStack(
+                  index: _index,
+                  children: <Widget>[
+                    Container(
+                      color: Colors.pink,
+                      child: Center(
+                        child: Text('Page 1'),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.cyan,
+                      child: Center(
+                        child: Text('Page 2'),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.deepPurple,
+                      child: Center(
+                        child: Text('Page 3'),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+              ,
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () {
+                      if (_index <= 0) return;
+                      setState(() {
+                        _index -= 1;
+                      });
+                    },
+                    child: Text(
+                      "Prev",
+                    ),
+                  ), FlatButton(
+                    onPressed: () {
+                      if (_index >= 2) return;
+                      setState(() {
+                        _index += 1;
+                      });
+                    },
+                    child: Text(
+                      "Next",
+                    ),
+                  )
+                ],
 
+              )
             ],
           ),
         ),
