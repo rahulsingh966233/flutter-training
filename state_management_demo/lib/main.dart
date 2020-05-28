@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:statemanagementdemo/todo.dart';
 
-
 void main() {
   runApp(MaterialApp(
     title: 'Passin Data',
@@ -11,7 +10,8 @@ void main() {
 }
 
 class TodoScreen extends StatelessWidget {
-   final List<Todo> listing = List.generate(10, (index) => Todo('Todo-$index', 'description--$index'));
+  final List<Todo> listing =
+      List.generate(10, (index) => Todo('Todo-$index', 'description--$index'));
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,8 @@ class TodoScreen extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailScreen(todo: listing[index])));
+                      builder: (context) =>
+                          DetailScreen(todo: listing[index])));
             },
           );
         },
