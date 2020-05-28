@@ -11,17 +11,12 @@ class Todo {
 void main() {
   runApp(MaterialApp(
     title: 'Passin Data',
-    home: TodoScreen(
-      todos:
-          List.generate(10, (index) => Todo('Todo$index', 'description$index')),
-    ),
+    home: TodoScreen(),
   ));
 }
 
 class TodoScreen extends StatelessWidget {
-  final List<Todo> todos;
-
-  TodoScreen({Key key, @required this.todos}) : super(key: key);
+   final List<Todo> listing = List.generate(10, (index) => Todo('Todo-$index', 'description--$index'));
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +25,15 @@ class TodoScreen extends StatelessWidget {
         title: Text('Appbar'),
       ),
       body: ListView.builder(
-        itemCount: todos.length,
+        itemCount: listing.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(todos[index].title),
+            title: Text(listing[index].title),
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailScreen(todo: todos[index])));
+                      builder: (context) => DetailScreen(todo: listing[index])));
             },
           );
         },
