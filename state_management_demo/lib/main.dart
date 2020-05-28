@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 void main() {
   runApp(MyApp());
@@ -81,7 +82,8 @@ class MyApp extends StatelessWidget {
               titleSection,
               buttonSection,
               textSection,
-              box1
+              box1,
+              ParentWidget()
             ],
           ),
         ),
@@ -184,6 +186,59 @@ class _TapboxAState extends State<TapboxA> {
           decoration: BoxDecoration(
             color: _isActive ? Colors.lightGreen[700]: Colors.grey[600]
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ParentWidget extends StatefulWidget {
+  @override
+  _ParentWidgetState createState() => _ParentWidgetState();
+}
+
+class _ParentWidgetState extends State<ParentWidget> {
+  bool _active = false;
+  void _handleTapBoxBChange(bool newVal){
+    setState(() {
+      _active = newVal;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TapBoxB(
+        active : _active,
+        onChanged: _handleTapBoxBChange,
+      ),
+    );
+  }
+}
+
+class TapBoxB extends StatelessWidget {
+  TapBoxB({Key key, this.active:false, @required this.onChanged});
+   final bool active;
+  final ValueChanged<bool> onChanged;
+
+  void _handleTap(){
+    onChanged(!active);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _handleTap,
+      child: Container(
+        child: Center(
+          child: Text(
+            active ? 'Active' : 'Inactive',
+            style: TextStyle(fontSize: 32.0, color: Colors.white),
+          ),
+        ),
+        width: 100.0,
+        height: 100.0,
+        decoration: BoxDecoration(
+          color: active ? Colors.orange[700] : Colors.grey[300],
         ),
       ),
     );
