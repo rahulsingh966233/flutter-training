@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
       ],
     ),
   );
+  
   @override
   Widget build(BuildContext context) {
     Color color = Theme.of(context).primaryColor;
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 Column _buildButtonColumn(Color color, IconData icon, String label) {
   return Column(
     mainAxisSize: MainAxisSize.min,
@@ -109,4 +111,31 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
       ),
     ],
   );
+}
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: (_isFavorited ? Icon(Icons.star): Icon(Icons.star_border)),
+            color: Colors.red[500],
+            onPressed: _toggleFav(),
+          ),
+        )
+      ],
+    );
+  }
 }
