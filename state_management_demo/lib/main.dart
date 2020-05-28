@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    title: 'Named Routes Demo',
+    initialRoute: '/',
+    routes: {
+      // When navigating to the "/" route, build the FirstScreen widget.
+      '/': (context) => MyApp(),
+      // When navigating to the "/second" route, build the SecondScreen widget.
+      '/second': (context) => SecondScreen(),
+    },
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -66,7 +75,7 @@ class MyApp extends StatelessWidget {
       ),
     );
     return MaterialApp(
-      title: 'Flutter layout demo',
+//      title: 'Flutter layout demo',
       home: Scaffold(
         appBar: AppBar(
           title: Text('Flutter layout demo'),
@@ -87,8 +96,15 @@ class MyApp extends StatelessWidget {
             ParentWidgetC(),
             MainScreen(),
             FirstRoute(),
+            RaisedButton(
+              child: Text('Launch screen'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/second');
+              },
+            ),
           ],
         ),
+
       ),
     );
   }
@@ -413,21 +429,6 @@ class SecondRoute extends StatelessWidget {
   }
 }
 
-class FirstScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: RaisedButton(
-          child: Text('Launch screen'),
-          onPressed: () {
-            Navigator.pushNamed(context, '/second');
-          },
-        ),
-      ),
-    );
-  }
-}
 
 class SecondScreen extends StatelessWidget {
   @override
