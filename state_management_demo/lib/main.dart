@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
       ],
     ),
   );
-  
+
   @override
   Widget build(BuildContext context) {
     Color color = Theme.of(context).primaryColor;
@@ -72,25 +72,24 @@ class MyApp extends StatelessWidget {
           title: Text('Flutter layout demo'),
         ),
         body: ListView(
-            children: [
-              Image.network(
-                'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                width: 600,
-                height: 240,
-                fit: BoxFit.cover,
-              ),
-              titleSection,
-              buttonSection,
-              textSection,
-              box1,
-              ParentWidget()
-            ],
-          ),
+          children: [
+            Image.network(
+              'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
+            titleSection,
+            buttonSection,
+            textSection,
+            box1,
+            ParentWidget()
+          ],
         ),
+      ),
     );
   }
 }
-
 
 Column _buildButtonColumn(Color color, IconData icon, String label) {
   return Column(
@@ -135,13 +134,14 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         }
       });
     }
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           padding: EdgeInsets.all(0),
           child: IconButton(
-            icon: (_isFavorited ? Icon(Icons.star): Icon(Icons.star_border)),
+            icon: (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
             color: (_isFavorited ? Colors.green[900] : Colors.red[500]),
             onPressed: _toggleFavorite,
           ),
@@ -164,11 +164,12 @@ class TapboxA extends StatefulWidget {
 
 class _TapboxAState extends State<TapboxA> {
   bool _isActive = false;
-  void _handleTap(){
+  void _handleTap() {
     setState(() {
       _isActive = !_isActive;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -178,20 +179,20 @@ class _TapboxAState extends State<TapboxA> {
           child: Center(
             child: Text(
               _isActive ? "Active" : "InActive",
-              style: TextStyle(fontSize: 20.0,color: Colors.white),
+              style: TextStyle(fontSize: 20.0, color: Colors.white),
             ),
           ),
           width: 100.0,
           height: 100.0,
           decoration: BoxDecoration(
-            color: _isActive ? Colors.lightGreen[700]: Colors.grey[600]
-          ),
+              color: _isActive ? Colors.lightGreen[700] : Colors.grey[600]),
         ),
       ),
     );
   }
 }
 
+//parent widget manages the widget’s state
 class ParentWidget extends StatefulWidget {
   @override
   _ParentWidgetState createState() => _ParentWidgetState();
@@ -199,16 +200,17 @@ class ParentWidget extends StatefulWidget {
 
 class _ParentWidgetState extends State<ParentWidget> {
   bool _active = false;
-  void _handleTapBoxBChange(bool newVal){
+  void _handleTapBoxBChange(bool newVal) {
     setState(() {
       _active = newVal;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TapBoxB(
-        active : _active,
+        active: _active,
         onChanged: _handleTapBoxBChange,
       ),
     );
@@ -216,11 +218,11 @@ class _ParentWidgetState extends State<ParentWidget> {
 }
 
 class TapBoxB extends StatelessWidget {
-  TapBoxB({Key key, this.active:false, @required this.onChanged});
-   final bool active;
+  TapBoxB({Key key, this.active: false, @required this.onChanged});
+  final bool active;
   final ValueChanged<bool> onChanged;
 
-  void _handleTap(){
+  void _handleTap() {
     onChanged(!active);
   }
 
@@ -244,3 +246,4 @@ class TapBoxB extends StatelessWidget {
     );
   }
 }
+//end parent widget manages the widget’s state
