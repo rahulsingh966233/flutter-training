@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       softWrap: true,
     ),
   );
+  Widget box1 = TapboxA();
   Widget titleSection = Container(
     padding: const EdgeInsets.all(32),
     child: Row(
@@ -79,7 +80,8 @@ class MyApp extends StatelessWidget {
               ),
               titleSection,
               buttonSection,
-              textSection
+              textSection,
+              box1
             ],
           ),
         ),
@@ -149,6 +151,41 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
           ),
         )
       ],
+    );
+  }
+}
+
+class TapboxA extends StatefulWidget {
+  @override
+  _TapboxAState createState() => _TapboxAState();
+}
+
+class _TapboxAState extends State<TapboxA> {
+  bool _isActive = false;
+  void _handleTap(){
+    setState(() {
+      _isActive = !_isActive;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _handleTap,
+      child: Center(
+        child: Container(
+          child: Center(
+            child: Text(
+              _isActive ? "Active" : "InActive",
+              style: TextStyle(fontSize: 20.0,color: Colors.white),
+            ),
+          ),
+          width: 100.0,
+          height: 100.0,
+          decoration: BoxDecoration(
+            color: _isActive ? Colors.lightGreen[700]: Colors.grey[600]
+          ),
+        ),
+      ),
     );
   }
 }
