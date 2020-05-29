@@ -1,39 +1,55 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:statemanagementdemo/secon_screen.dart';
-import 'package:statemanagementdemo/todo.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title: 'Passin Data',
-    home: TodoScreen(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Counter(),
+      child: MyApp(),
+    ),
+  );
 }
 
-class TodoScreen extends StatelessWidget {
-  final List<Todo> listing =
-      List.generate(10, (index) => Todo('Todo-$index', 'description--$index'));
+class Counter with ChangeNotifier {
+  int value = 0;
 
+  void increment() {
+    value += 1;
+    notifyListeners();
+  }
+}
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Appbar'),
-      ),
-      body: ListView.builder(
-        itemCount: listing.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(listing[index].title),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          DetailScreen(todo: listing[index])));
-            },
-          );
-        },
+    return MaterialApp(
+      title: 'Flutter Demo',
+
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Demo Home Page'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('You have pushed the button this many times:'),
+
+              Consumer<Counter>(
+                builder: (context, counter, child) => Text(
+                  '${counter.value}',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () =>
+              Provider.of<Counter>(context, listen: false).increment(),
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
