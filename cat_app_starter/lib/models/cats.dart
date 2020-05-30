@@ -47,9 +47,6 @@ class BreedList {
   List<Breed> breeds;
 
   BreedList({this.breeds});
-//  factory BreedList.fromJson(Map<String, dynamic> json) => _$BreedListFromJson(json);
-//  Map<String, dynamic> toJson() => _$BreedListToJson(this);
-
   factory BreedList.fromJson(List<dynamic> json) {
     return BreedList(
         breeds: json
