@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/codecrunch/Desktop/parsing_json_flutter/parsing_json_flutter/cat_app_starter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-el/values-el.xml",
+            "map": [
+                {
+                    "source": "/home/codecrunch/.gradle/caches/transforms-1/files-1.1/core-1.1.0.aar/56f0d0e7d7caef362128ef5b65156d02/res/values-el/values-el.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
