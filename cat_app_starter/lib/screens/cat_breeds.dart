@@ -29,6 +29,7 @@
  *
  */
 
+import 'package:battery/battery.dart';
 import 'package:flutter/material.dart';
 import '../api/cat_api.dart';
 import '../models/cats.dart';
@@ -56,6 +57,9 @@ class _CatBreedsPageState extends State<CatBreedsPage> {
 
   void getCatData() async {
     var result = await CatAPI().getCatBreeds();
+    var battery = Battery();
+    print(await battery.batteryLevel);
+
     print(result);
   var catMap = json.decode(result);
   setState(() {
