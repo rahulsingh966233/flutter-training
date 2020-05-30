@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'cats.g.dart';
+
 /*
  * Copyright (c) 2019 Razeware LLC
  *
@@ -42,11 +43,15 @@ class Breed {
   factory Breed.fromJson(Map<String, dynamic> json) => _$BreedFromJson(json);
   Map<String, dynamic> toJson() => _$BreedToJson(this);
 }
+
 @JsonSerializable()
 class BreedList {
   List<Breed> breeds;
 
   BreedList({this.breeds});
+//  factory BreedList.fromJson(Map<String, dynamic> json) => _$BreedListFromJson(json);
+//  Map<String, dynamic> toJson() => _$BreedListToJson(this);
+
   factory BreedList.fromJson(List<dynamic> json) {
     return BreedList(
         breeds: json
@@ -75,7 +80,8 @@ class CatBreed {
   List<Cat> breeds;
 
   CatBreed({this.id, this.url, this.width, this.height, this.breeds});
-  factory CatBreed.fromJson(Map<String, dynamic> json) => _$CatBreedFromJson(json);
+  factory CatBreed.fromJson(Map<String, dynamic> json) =>
+      _$CatBreedFromJson(json);
   Map<String, dynamic> toJson() => _$CatBreedToJson(this);
 }
 

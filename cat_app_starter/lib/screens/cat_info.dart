@@ -85,8 +85,10 @@ class _CatInfoState extends State<CatInfo> {
       child: Container(
         width: mediaSize.width,
         height: mediaSize.height,
-        decoration: BoxDecoration(image: DecorationImage(
-          image: NetworkImage(catList.breeds[0].url),fit: BoxFit.contain,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: NetworkImage(catList.breeds[0].url),
+          fit: BoxFit.contain,
         )),
       ),
     );

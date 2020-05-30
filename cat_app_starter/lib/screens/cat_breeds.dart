@@ -61,10 +61,10 @@ class _CatBreedsPageState extends State<CatBreedsPage> {
     print(await battery.batteryLevel);
 
     print(result);
-  var catMap = json.decode(result);
-  setState(() {
-    breedList  = BreedList.fromJson(catMap);
-  });
+    var catMap = json.decode(result);
+    setState(() {
+      breedList = BreedList.fromJson(catMap);
+    });
   }
 
   @override
@@ -74,12 +74,18 @@ class _CatBreedsPageState extends State<CatBreedsPage> {
         title: Text(widget.title),
       ),
       body: ListView.builder(
-          itemCount: (breedList == null || breedList.breeds == null || breedList.breeds.length == 0) ? 0:breedList.breeds.length,
+          itemCount: (breedList == null ||
+                  breedList.breeds == null ||
+                  breedList.breeds.length == 0)
+              ? 0
+              : breedList.breeds.length,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CatInfo(catId: breedList.breeds[index].id, catBreed: breedList.breeds[index].name);
+                  return CatInfo(
+                      catId: breedList.breeds[index].id,
+                      catBreed: breedList.breeds[index].name);
                 }));
               },
               child: Card(

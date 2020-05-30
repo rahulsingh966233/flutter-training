@@ -1,6 +1,7 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import io.flutter.plugins.battery.BatteryPlugin;
 
 /**
  * Generated file. Do not edit.
@@ -10,6 +11,7 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    BatteryPlugin.registerWith(registry.registrarFor("io.flutter.plugins.battery.BatteryPlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {
