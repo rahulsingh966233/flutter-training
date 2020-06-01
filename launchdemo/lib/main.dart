@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,9 +15,19 @@ class MyApp extends StatelessWidget {
 }
 
 class DemoPage extends StatelessWidget {
-  
+  launchURL(){
+    launch('https://flutter.dev');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: RaisedButton(
+          onPressed: launchURL,
+          child: Text('Flutter'),
+        ),
+      ),
+    );
   }
 }
