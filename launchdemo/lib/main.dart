@@ -25,6 +25,7 @@ class DemoPage extends StatelessWidget {
       body: ButtonBar(
         alignment: MainAxisAlignment.center,
         children: <Widget>[
+          Text("Counter Value: 0", style: TextStyle(fontSize: 20),),
           RaisedButton(
             child: Text("increment"),
             onPressed: () {},
