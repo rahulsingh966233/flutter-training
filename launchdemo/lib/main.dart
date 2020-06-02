@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,21 +22,21 @@ class DemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ButtonBar(
-        alignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text("Counter Value: 0", style: TextStyle(fontSize: 20),),
-          RaisedButton(
-            child: Text("increment"),
-            onPressed: () {},
-          ),
-          RaisedButton(
-            child: Text("decrement"),
-            onPressed: () {},
-          ),
-        ],
-      ),
+    return ButtonBar(
+      alignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text("Counter Value: 0", style: TextStyle(fontSize: 20),),
+        RaisedButton(
+          child: Text("increment"),
+          onPressed: () {
+
+          },
+        ),
+        RaisedButton(
+          child: Text("decrement"),
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }
