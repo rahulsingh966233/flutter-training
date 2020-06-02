@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 
 enum CounterEvents {increment, decrement}
