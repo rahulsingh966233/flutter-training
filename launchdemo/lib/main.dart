@@ -22,11 +22,18 @@ class DemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          onPressed: launchURL,
-          child: Text('Flutter'),
-        ),
+      body: ButtonBar(
+        alignment: MainAxisAlignment.center,
+        children: <Widget>[
+          RaisedButton(
+            child: Text("increment"),
+            onPressed: () {},
+          ),
+          RaisedButton(
+            child: Text("decrement"),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }
