@@ -1,66 +1,171 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertimer/bloc/timer_bloc.dart';
+import 'package:fluttertimer/ticker.dart';
+import 'package:wave/wave.dart';
+import 'package:wave/config.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: Color.fromRGBO(109, 234, 255, 1),
+        accentColor: Color.fromRGBO(72, 74, 126, 1),
+        brightness: Brightness.dark,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Flutter Timer',
+      home: BlocProvider(
+        create: (context) => TimerBloc(ticker: Ticker()),
+        child: Timer(),
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class Timer extends StatelessWidget {
+  static const TextStyle timerTextStyle = TextStyle(
+    fontSize: 60,
+    fontWeight: FontWeight.bold,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      appBar: AppBar(title: Text('Flutter Timer')),
+      body: Stack(
+        children: [
+          Background(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 100.0),
+                child: Center(
+                  child: BlocBuilder<TimerBloc, TimerState>(
+                    builder: (context, state) {
+                      final String minutesStr = ((state.duration / 60) % 60)
+                          .floor()
+                          .toString()
+                          .padLeft(2, '0');
+                      final String secondsStr = (state.duration % 60)
+                          .floor()
+                          .toString()
+                          .padLeft(2, '0');
+                      return Text(
+                        '$minutesStr:$secondsStr',
+                        style: Timer.timerTextStyle,
+                      );
+                    },
+                  ),
+                ),
+              ),
+              BlocBuilder<TimerBloc, TimerState>(
+                condition: (previousState, currentState) =>
+                    currentState.runtimeType != previousState.runtimeType,
+                builder: (context, state) => Actions(),
+              ),
+            ],
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    );
+  }
+}
+
+class Actions extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: _mapStateToActionButtons(
+        timerBloc: BlocProvider.of<TimerBloc>(context),
+      ),
+    );
+  }
+
+  List<Widget> _mapStateToActionButtons({
+    TimerBloc timerBloc,
+  }) {
+    final TimerState currentState = timerBloc.state;
+    if (currentState is Ready) {
+      return [
+        FloatingActionButton(
+          child: Icon(Icons.play_arrow),
+          onPressed: () =>
+              timerBloc.add(Start(duration: currentState.duration)),
         ),
+      ];
+    }
+    if (currentState is Running) {
+      return [
+        FloatingActionButton(
+          child: Icon(Icons.pause),
+          onPressed: () => timerBloc.add(Pause()),
+        ),
+        FloatingActionButton(
+          child: Icon(Icons.replay),
+          onPressed: () => timerBloc.add(Reset()),
+        ),
+      ];
+    }
+    if (currentState is Paused) {
+      return [
+        FloatingActionButton(
+          child: Icon(Icons.play_arrow),
+          onPressed: () => timerBloc.add(Resume()),
+        ),
+        FloatingActionButton(
+          child: Icon(Icons.replay),
+          onPressed: () => timerBloc.add(Reset()),
+        ),
+      ];
+    }
+    if (currentState is Finished) {
+      return [
+        FloatingActionButton(
+          child: Icon(Icons.replay),
+          onPressed: () => timerBloc.add(Reset()),
+        ),
+      ];
+    }
+    return [];
+  }
+}
+
+class Background extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return WaveWidget(
+      config: CustomConfig(
+        gradients: [
+          [
+            Color.fromRGBO(72, 74, 126, 1),
+            Color.fromRGBO(125, 170, 206, 1),
+            Color.fromRGBO(184, 189, 245, 0.7)
+          ],
+          [
+            Color.fromRGBO(72, 74, 126, 1),
+            Color.fromRGBO(125, 170, 206, 1),
+            Color.fromRGBO(172, 182, 219, 0.7)
+          ],
+          [
+            Color.fromRGBO(72, 73, 126, 1),
+            Color.fromRGBO(125, 170, 206, 1),
+            Color.fromRGBO(190, 238, 246, 0.7)
+          ],
+        ],
+        durations: [19440, 10800, 6000],
+        heightPercentages: [0.03, 0.01, 0.02],
+        gradientBegin: Alignment.bottomCenter,
+        gradientEnd: Alignment.topCenter,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      size: Size(double.infinity, double.infinity),
+      waveAmplitude: 25,
+      backgroundColor: Colors.blue[50],
     );
   }
 }
