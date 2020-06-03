@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
 
 class DemoPage extends StatelessWidget {
 
+  void dispose(){
+    CounterBloc().close();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _counterBloc = BlocProvider.of<CounterBloc>(context);

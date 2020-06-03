@@ -16,8 +16,6 @@ class CounterBloc extends Bloc<CounterEvents, int>{
           case CounterEvents.decrement:
             yield state - 1;
             break;
-
         }
-  }
-  
+    }
 }
