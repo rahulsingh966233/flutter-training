@@ -16,8 +16,8 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   StreamSubscription<int> _tickerSubscription;
 
   TimerBloc({@required Ticker ticker})
-      : assert(ticker != null),
-        _ticker = ticker;
+//      : assert(ticker != null),
+       : _ticker = ticker;
 
   @override
   TimerState get initialState => Ready(_duration);

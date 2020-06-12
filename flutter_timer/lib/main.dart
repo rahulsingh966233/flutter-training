@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
 class Timer extends StatelessWidget {
   static const TextStyle timerTextStyle = TextStyle(
     fontSize: 60,
+    color: Colors.black,
     fontWeight: FontWeight.bold,
   );
 
