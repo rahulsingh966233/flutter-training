@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "44395279742",
+    "firebase_url": "https://otp-integration-5a2e7.firebaseio.com",
+    "project_id": "otp-integration-5a2e7",
+    "storage_bucket": "otp-integration-5a2e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44395279742:android:19ff4365b9391062442f2f",
+        "android_client_info": {
+          "package_name": "com.example.otp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44395279742-ql88cgkb8cmsjdc81ngeaie85i9ar05c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaAAMbrl4Mc-qkDadmWBteKfKGPjVZU5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44395279742-ql88cgkb8cmsjdc81ngeaie85i9ar05c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

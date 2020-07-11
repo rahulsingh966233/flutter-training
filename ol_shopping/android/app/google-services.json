@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "207243901704",
+    "firebase_url": "https://photography-e2b61.firebaseio.com",
+    "project_id": "photography-e2b61",
+    "storage_bucket": "photography-e2b61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207243901704:android:6fd72b4e778cec2ca60abd",
+        "android_client_info": {
+          "package_name": "com.example.olshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207243901704-8faq7v9oin309c7a6t10h68ma62aehpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPU1R_kywdIb60ZEyH0__HJTw8yrBk5X4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207243901704-8faq7v9oin309c7a6t10h68ma62aehpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
