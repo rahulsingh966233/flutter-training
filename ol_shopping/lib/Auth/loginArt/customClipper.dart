@@ -13,8 +13,8 @@ class ClipPainter extends CustomClipper<Path> {
     path.lineTo(size.width, 0);
 
     /// [Top Left corner]
-    var secondControlPoint = Offset(0, 0);
-    var secondEndPoint = Offset(width * .2, height * .3);
+    var secondControlPoint = Offset(90, 60);
+    var secondEndPoint = Offset(width * .2, height * .23);
     path.quadraticBezierTo(
         secondControlPoint.dx, secondControlPoint.dy, secondEndPoint.dx,
         secondEndPoint.dy);

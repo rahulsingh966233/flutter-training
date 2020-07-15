@@ -1,0 +1,39 @@
+name: olshopping
+description: A new Flutter application.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_auth: ^0.16.1
+  cupertino_icons: ^0.1.3
+  searchable_dropdown: ^1.1.3
+  flutter_staggered_animations: ^0.1.2
+  curved_navigation_bar: ^0.3.3
+  page_transition: ^1.1.5
+  google_fonts: ^0.3.5
+  local_auth: ^0.4.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/
+  fonts:
+    - family: GreatVibes
+      fonts:
+        - asset: font/GreatVibes-Regular.ttf
+    - family: NotoSerif
+      fonts:
+        - asset: font/NotoSerif-Regular.ttf
