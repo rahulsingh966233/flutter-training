@@ -58,20 +58,15 @@ class FormBox extends StatelessWidget {
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.only(left: 130),
-              child: Positioned(
-                // top: 280,
-                // left: 190,
-                top: 270,
-                child: FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.upToDown, child: MyApp()));
-                  },
-                  backgroundColor: Color(0xFF36BA7A),
-                  child: Icon(Icons.arrow_forward_ios),
-                ),
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.upToDown, child: MyApp()));
+                },
+                backgroundColor: Color(0xFF36BA7A),
+                child: Icon(Icons.arrow_forward_ios),
               ),
             ),
           ],

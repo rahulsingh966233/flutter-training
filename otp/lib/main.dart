@@ -108,7 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(_otpCOntrolled.text);
                 print(numberOTP);
                 print(_otpCOntrolled.text == numberOTP);
-                // ignore: unrelated_type_equality_checks
                 _otpCOntrolled.text == numberOTP ? print("Correct") : print("wrong");
               },
               child: Text("Submit"),
@@ -118,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createRecord,
-        child: Text("Submit"),
+        child: Text("Send"),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
