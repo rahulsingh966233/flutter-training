@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:olshopping/Auth/signin.dart';
-import 'package:olshopping/home.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class MyRegisterPage extends StatefulWidget {
   @override
@@ -11,9 +11,6 @@ class MyRegisterPage extends StatefulWidget {
 
 class _SignupPageState extends State<MyRegisterPage>
     with SingleTickerProviderStateMixin {
-  Color _color1 = Color(0xFF36BA7A);
-  Color _color2 = Colors.white;
-
   AnimationController controller;
   Animation topAnimation1,
       topAnimation2,
@@ -64,10 +61,10 @@ class _SignupPageState extends State<MyRegisterPage>
   @override
   Widget build(BuildContext context) {
     final double _height = MediaQuery.of(context).size.height;
-    final double _width = MediaQuery.of(context).size.width;
+    final contactController = TextEditingController();
+    
     controller.forward();
     return AnimatedBuilder(
-
         animation: controller,
         builder: (BuildContext context, Widget child) {
           return Scaffold(
@@ -81,7 +78,6 @@ class _SignupPageState extends State<MyRegisterPage>
                         0, topAnimation2.value * _height, 0),
                     child: buildNameColumn()),
                 SizedBox(height: 20),
-
               ],
             ),
           );
@@ -101,7 +97,7 @@ class _SignupPageState extends State<MyRegisterPage>
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(50),
                       topRight: Radius.circular(0),
-                      bottomLeft:Radius.circular(50)),
+                      bottomLeft: Radius.circular(50)),
                   side: BorderSide(width: 2, color: Colors.white)),
               elevation: 7,
               child: Column(children: [
@@ -127,11 +123,11 @@ class _SignupPageState extends State<MyRegisterPage>
                           padding: EdgeInsets.only(left: 10, right: 10),
                           child: TextField(
                             decoration: InputDecoration(
-                                prefixIcon:
-                                    Icon(Icons.account_circle, color: Colors.black),
+                                prefixIcon: Icon(Icons.account_circle,
+                                    color: Colors.black),
                                 labelText: 'Name',
-                                labelStyle:
-                                    TextStyle(color: Colors.black, fontSize: 14),
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 14),
                                 fillColor: Colors.black),
                           ),
                         ),
@@ -140,11 +136,11 @@ class _SignupPageState extends State<MyRegisterPage>
                           padding: EdgeInsets.only(left: 10, right: 10),
                           child: TextField(
                             decoration: InputDecoration(
-                                prefixIcon:
-                                    Icon(Icons.account_circle, color: Colors.black),
+                                prefixIcon: Icon(Icons.account_circle,
+                                    color: Colors.black),
                                 labelText: 'Email',
-                                labelStyle:
-                                    TextStyle(color: Colors.black, fontSize: 14),
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 14),
                                 fillColor: Colors.black),
                           ),
                         ),
@@ -156,8 +152,8 @@ class _SignupPageState extends State<MyRegisterPage>
                                 prefixIcon:
                                     Icon(Icons.security, color: Colors.black),
                                 labelText: 'Password',
-                                labelStyle:
-                                    TextStyle(color: Colors.black, fontSize: 14),
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 14),
                                 fillColor: Colors.black),
                           ),
                         ),
@@ -169,8 +165,35 @@ class _SignupPageState extends State<MyRegisterPage>
                                 prefixIcon:
                                     Icon(Icons.security, color: Colors.black),
                                 labelText: 'Confirm Password',
-                                labelStyle:
-                                    TextStyle(color: Colors.black, fontSize: 14),
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                                fillColor: Colors.black),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: TextField(
+                            controller: contactController,
+                            decoration: InputDecoration(
+                                prefixIcon:
+                                    Icon(Icons.security, color: Colors.black),
+                                labelText: 'Contact Number',
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                                fillColor: Colors.black),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                prefixIcon:
+                                    Icon(Icons.security, color: Colors.black),
+                                labelText: 'OTP',
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 14),
                                 fillColor: Colors.black),
                           ),
                         ),
@@ -195,16 +218,16 @@ class _SignupPageState extends State<MyRegisterPage>
                 ),
               ]),
             ),
-            
           ),
         ),
-        SizedBox(height: 60,),
+        SizedBox(
+          height: 60,
+        ),
         Image.network(
           'http://clipart-library.com/new_gallery/332-3325704_eyes-cartoon-eyes-and-mouth.png',
           height: 140,
         )
       ],
     );
-    
   }
 }
