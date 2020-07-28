@@ -1,12 +1,9 @@
 import 'dart:math';
 
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:olshopping/home.dart';
 import 'package:page_transition/page_transition.dart';
 
-FirebaseDatabase database = new FirebaseDatabase();
 
 class FormBox extends StatelessWidget {
   @override
@@ -17,7 +14,6 @@ class FormBox extends StatelessWidget {
   }
 
   Widget buildStack(BuildContext context) {
-
     return Stack(
       overflow: Overflow.visible,
       children: <Widget>[
@@ -71,10 +67,8 @@ class FormBox extends StatelessWidget {
                     Navigator.push(
                         context,
                         PageTransition(
-                            type: PageTransitionType.upToDown,
-                            child: MyApp()));
+                            type: PageTransitionType.upToDown, child: MyApp()));
                   },
-
                   backgroundColor: Color(0xFF36BA7A),
                   child: Icon(Icons.arrow_forward_ios),
                 ),
@@ -82,7 +76,6 @@ class FormBox extends StatelessWidget {
             ),
           ],
         ),
-
       ],
     );
   }

@@ -39,13 +39,17 @@ class _MyHomePageState extends State<MyHomePage> {
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _otpCOntrolled = TextEditingController();
+  var numberOTP = '0';
 
   Future<Map<String, dynamic>> createRecord() async {
-    print(_otpCOntrolled.text);
     int min = 100000;
     int max = 999999;
     var randomizer = new Random();
     var rNum = min + randomizer.nextInt(max - min);
+    print(rNum);
+    setState(() {
+      numberOTP = "$rNum";
+    });
     DocumentReference ref = await databaseReference.collection("users").add({
       'email': _emailController.text,
       'number': _phoneNumberController.text,
@@ -59,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final msg = jsonEncode({
       "mobiles": _phoneNumberController.text,
       "flow_id": "5f168b0dd6fc053e373398e5",
-      "otp" : "$rNum",
+      "otp": "$rNum",
       "sender": "SMSIND",
       "unicode": 0
     });
@@ -96,8 +100,18 @@ class _MyHomePageState extends State<MyHomePage> {
             Flexible(
               child: TextField(
                 controller: _otpCOntrolled,
-                decoration: InputDecoration.collapsed(hintText: 'Number'),
+                decoration: InputDecoration.collapsed(hintText: 'OTP'),
               ),
+            ),
+            FloatingActionButton(
+              onPressed: (){
+                print(_otpCOntrolled.text);
+                print(numberOTP);
+                print(_otpCOntrolled.text == numberOTP);
+                // ignore: unrelated_type_equality_checks
+                _otpCOntrolled.text == numberOTP ? print("Correct") : print("wrong");
+              },
+              child: Text("Submit"),
             ),
           ],
         ),
