@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "289930328249",
+    "firebase_url": "https://sddesk6897.firebaseio.com",
+    "project_id": "sddesk6897",
+    "storage_bucket": "sddesk6897.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289930328249:android:b5596dc2ae63f456de8368",
+        "android_client_info": {
+          "package_name": "com.example.sddemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289930328249-e4bbrdp0mu2l448e2vpvv0p5fhmp013c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sddemo",
+            "certificate_hash": "4d188913d760dec5b09a33cbe4dcbecc95372cdc"
+          }
+        },
+        {
+          "client_id": "289930328249-bgmjvrorrdm4m060qo7nu9s334adi8vo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAendEwMhg7bk1MvyPmh6av6Jy4Yn9-b6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289930328249-bgmjvrorrdm4m060qo7nu9s334adi8vo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
