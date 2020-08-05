@@ -20,8 +20,9 @@ class _MyAppState extends State<MyApp> {
   String gName;
   String gProf;
   String social_media_type = '';
+
   final facebookLogin = FacebookLogin();
-  GoogleSignInAccount _currentUser;
+
   GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: <String>['email'],
   );
