@@ -119,7 +119,8 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: SingleChildScrollView(
-        child: Column(
+        child: bookData.length != 0 ?
+        Column(
           children: [
             Padding(
               padding: EdgeInsets.all(10),
@@ -152,8 +153,14 @@ class _HomeViewState extends State<HomeView> {
                   },
                   itemBuilder: (context, searchedData) {
                     return ListTile(
-                      leading: Icon(Icons.book,color: Colors.green,),
-                      title: Text(searchedData['name'],style: TextStyle(fontSize: 15),),
+                      leading: Icon(
+                        Icons.book,
+                        color: Colors.green,
+                      ),
+                      title: Text(
+                        searchedData['name'],
+                        style: TextStyle(fontSize: 15),
+                      ),
                     );
                   },
                   onSuggestionSelected: (suggestion) {},
@@ -261,118 +268,91 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
             ),
-            Text("${bookData.length}"),
             Container(
               padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: <Widget>[
+                    for ( var bData in bookData )
                     Container(
-                      height: 130.0,
+                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      height: 250.0,
+                      width: 220.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.green[200],
+                            offset: Offset(2.0, 2.0), //(x,y)
+                            blurRadius: 9.0,
+                          ),
+                        ],
+                      ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
+//                            margin: EdgeInsets.fromLTRB(10,0,20,5),
+                            color: Colors.green[100],
                             width: 180.0,
                             child: FlatButton(
                               child: Card(
                                 elevation: 9,
                                 child: Image.network(
-                                  'https://cdn.shootdotedit.com/wp-content/uploads/2017/02/15102338/SaltandPinePhotography_LandscapeBlog.jpg',
-//                                  height: 100,
-                                  fit: BoxFit.cover,
+                                  bData['photo'],
+                                  height: 190.0,
                                 ),
                               ),
-                                onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              PageTransition(
-                                                  type: PageTransitionType
-                                                      .rightToLeftWithFade,
-                                                  child: BookDetail()));
-                                        },
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        child: BookDetail(bookId : bData['id'])));
+                              },
                             ),
                           ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(0, 10, 80, 0),
-                              child: Text("Wedding"),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130.0,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            width: 180.0,
-                            child: FlatButton(
-                              child: Card(
-                                elevation: 9,
-                                child: Image.network(
-                                    'https://images.unsplash.com/photo-1472653431158-6364773b2a56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60'),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(0, 10, 80, 0),
-                              child: Text("Events"),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130.0,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            width: 180.0,
-                            child: FlatButton(
-                              child: Card(
-                                elevation: 9,
-                                child: Image.network(
-                                    'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60'),
-                              ),
-//
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(0, 10, 80, 0),
-                              child: Text("Fashion"),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130.0,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            width: 180.0,
-                            child: FlatButton(
-                              child: Card(
-                                elevation: 9,
-                                child: Image.network(
-                                  'https://images.unsplash.com/photo-1559455208-f82921450174?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
-                                  fit: BoxFit.cover,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Flexible(
+                                child: Container(
+                                  margin: EdgeInsets.fromLTRB(10,0,10,5),
+                                  child: Text(bData['name'], style: TextStyle(fontWeight: FontWeight.bold), maxLines: 2,
+                                    textAlign: TextAlign.start,
+                                    softWrap: true,
+                                    overflow: TextOverflow.ellipsis,),
                                 ),
                               ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(0, 10, 80, 0),
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text("Birthday")),
-                            ),
+                              Flexible(
+                                child: Text.rich(
+                                  TextSpan(
+                                    children: <TextSpan>[
+                                      new TextSpan(
+                                        text: "₹${bookData[0]['mrp']}  ",
+                                        style: new TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold,
+                                          decoration: TextDecoration.lineThrough,
+                                        ),
+                                      ),
+                                      new TextSpan(
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                        text: " ₹${bookData[0]['price']}",
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ),
+                            ],
                           )
+
                         ],
                       ),
                     ),
@@ -384,7 +364,7 @@ class _HomeViewState extends State<HomeView> {
               height: 10,
             ),
           ],
-        ),
+        ) : Center(child: CircularProgressIndicator(),),
       ),
     );
   }
