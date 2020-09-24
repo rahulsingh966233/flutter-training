@@ -36,6 +36,7 @@ class TransactionEntity extends Equatable {
 class AccountHolderDetailEntity extends Equatable {
   final String group;
   final String fullName;
+  final String email;
   final String loginName;
   final String mobileNumber;
   final String nationality;
@@ -49,6 +50,7 @@ class AccountHolderDetailEntity extends Equatable {
   AccountHolderDetailEntity(
       this.group,
       this.fullName,
+      this.email,
       this.loginName,
       this.mobileNumber,
       this.nationality,
@@ -94,6 +96,7 @@ class AccountHolderDetailEntity extends Equatable {
     return AccountHolderDetailEntity(
       json['group'] as String,
       json['fullName'] as String,
+      json['email'] as String,
       json['loginName'] as String,
       json['mobileNumber'] as String,
       json['nationality'] as String,

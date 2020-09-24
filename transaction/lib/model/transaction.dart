@@ -26,6 +26,7 @@ class Transaction {
 class AccountHolderDetail {
   final String group;
   final String fullName;
+  final String email;
   final String loginName;
   final String mobileNumber;
   final String nationality;
@@ -39,6 +40,7 @@ class AccountHolderDetail {
   AccountHolderDetail(
       this.group,
       this.fullName,
+      this.email,
       this.loginName,
       this.mobileNumber,
       this.nationality,
@@ -53,6 +55,7 @@ class AccountHolderDetail {
     return AccountHolderDetailEntity(
         group,
         fullName,
+        email,
         loginName,
         mobileNumber,
         nationality,
@@ -68,6 +71,7 @@ class AccountHolderDetail {
     return AccountHolderDetail(
         entity.group,
         entity.fullName,
+        entity.email,
         entity.loginName,
         entity.mobileNumber,
         entity.nationality,

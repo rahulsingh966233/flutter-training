@@ -102,7 +102,7 @@ class ApiClient {
       "loginName": "miles7777",
       "email" : "miles+7777@fvbank.us",
       "mobileNumber": "+1 858-281-7777",
-      "nationality": "United States of America(USA)",
+      "nationality": "United States of America (USA)",
       "purposeOfAcc": "Personal Banking",
       "bankName": "Metropolitan Commericial Bank",
       "address": "99 Park Avenue, New York, NY 10016",

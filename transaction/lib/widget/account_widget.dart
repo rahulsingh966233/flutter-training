@@ -10,7 +10,6 @@ import '../bloc/transaction_bloc.dart';
 import 'custom/circle_clipper.dart';
 import 'custom/triangle_tab_indicator.dart';
 
-
 class AccountScreen extends StatefulWidget {
   @override
   _AccountScreenState createState() => _AccountScreenState();
@@ -126,7 +125,12 @@ class _AccountScreenState extends State<AccountScreen>
                                         return buildTransactionItem(
                                             state, index);
                                       }),
-                                  buildAccountDetail()
+                                  SingleChildScrollView(
+                                    child: Container(
+                                      height: 500.0,
+                                      child: buildAccountDetail(),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
@@ -272,12 +276,247 @@ class _AccountScreenState extends State<AccountScreen>
 
 Padding buildAccountDetail() {
   return Padding(
-    padding: EdgeInsets.all(10),
+    padding: EdgeInsets.only(top: 10.0, left: 20.0,right: 10.0),
     child: BlocBuilder<AccountBloc, AccountDetailState>(
       builder: (context, state) {
         if (state is AccountDetailLoadSuccess) {
-          print(state.accDetail[0].fullName);
-          return Text("shubh");
+          return Column(
+            children: <Widget>[
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Group',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  Text(
+                    state.accDetail[0].group,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Full Name',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    state.accDetail[0].fullName,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Login Name',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    state.accDetail[0].loginName,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Email',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    state.accDetail[0].email,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Mobile Phone',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    state.accDetail[0].mobileNumber,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Nationality',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Flexible(
+                    child: Text(
+                      state.accDetail[0].nationality,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Purpose Of Account',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    state.accDetail[0].purposeOfAcc,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Container(
+                    width: 150.0,
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Deposit Instructions',
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Bank Name: ${state.accDetail[0].bankName}",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Address: ${state.accDetail[0].address}",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 17.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "SWIFT/BIC:",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              state.accDetail[0].swiftNumber,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "Routing:",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "026013356",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "A/c Number:",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "0${state.accDetail[0].accountNumber}",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.0,),
+              Row(
+                children: [
+                  Container(
+                    width: 150.0,
+                    child: Text(
+                      'Deposit Reference Number',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    "${state.accDetail[0].referenceNumber}",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          );
         }
         return Text("Nothing");
       },
