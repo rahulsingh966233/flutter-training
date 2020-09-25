@@ -37,13 +37,13 @@ class _HomePageState extends State<HomePage> {
     return _isLoggedIn
         ? Scaffold(
             appBar: AppBar(
-              leading: Padding(
-                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                  child: Image.network(
-                    'http://www.studentdesk.in/img/logo.png',
-                    height: 100,
-                    width: 150,
-                  )),
+//              leading: Padding(
+//                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+//                  child: Image.network(
+//                    'https://www.studentdesk.in/img/logo.png',
+//                    height: 100,
+//                    width: 150,
+//                  )),
               backgroundColor: Colors.transparent,
               elevation: 0.0,
               actions: <Widget>[
