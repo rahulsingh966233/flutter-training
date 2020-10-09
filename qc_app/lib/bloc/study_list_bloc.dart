@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import 'dart:async';
 
 import 'package:qcapp/bloc/study_list_event.dart';
@@ -24,7 +8,7 @@ import 'package:qcapp/repository/study_repository.dart';
 
 class StudyBloc extends Bloc<StudyEvent, StudyState> {
   final StudyRepository studyRepository;
-  StreamSubscription _StudySubscription;
+  StreamSubscription _studySubscription;
 
   StudyBloc({@required this.studyRepository})
       : super(StudyListLoadInProgress());
@@ -41,21 +25,23 @@ class StudyBloc extends Bloc<StudyEvent, StudyState> {
     }
   }
 
+//  For Loading the study list
   Stream<StudyState> _mapLoadStudyListState() async* {
-    _StudySubscription?.cancel();
-    _StudySubscription = studyRepository.loadStudyList().listen(
-          (todos) => add(UpdateStudyList(todos)),
-    );
+    _studySubscription?.cancel();
+    _studySubscription = studyRepository.loadStudyList().listen(
+          (list) => add(UpdateStudyList(list)),
+        );
   }
 
-  Stream<StudyState> _mapUpdateStudyListState(
-      UpdateStudyList event) async* {
+//  For updating the study list after being load
+  Stream<StudyState> _mapUpdateStudyListState(UpdateStudyList event) async* {
     yield StudyListLoadSuccess(event.studyList);
   }
 
+//  For cancelling the subscription
   @override
   Future<void> close() {
-    _StudySubscription?.cancel();
+    _studySubscription?.cancel();
     return super.close();
   }
 }

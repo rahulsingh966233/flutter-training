@@ -7,11 +7,9 @@ class StudyEntity extends Equatable {
   final String studyId;
   final String tagline;
 
-  StudyEntity(this.title, this.logo, this.status,
-      this.studyId, this.tagline);
+  StudyEntity(this.title, this.logo, this.status, this.studyId, this.tagline);
 
   @override
-
   List<Object> get props => [title, logo, status, studyId, tagline];
 
   Map<String, Object> toJson() {

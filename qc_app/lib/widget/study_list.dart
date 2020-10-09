@@ -13,35 +13,35 @@ class _StudyListState extends State<StudyList> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child:  Scaffold(
-          bottomSheet: FixedFooter(),
-          drawer: new Drawer(),
-          appBar: AppBar(
-            elevation: 0.0,
-            iconTheme: new IconThemeData(color: Colors.grey[500]),
-            backgroundColor: Colors.white,
-            title: Center(
-              child: Text(
-                'Studies',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
+      child: Scaffold(
+        bottomSheet: FixedFooter(),
+        drawer: new Drawer(),
+        appBar: AppBar(
+          elevation: 0.0,
+          iconTheme: new IconThemeData(color: Colors.grey[500]),
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              'Studies',
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
-            actions: <Widget>[
-              IconButton(
-                iconSize: 30,
-                icon: Icon(
-                  Icons.notifications_none,
-                  color: Colors.grey[400],
-                ),
-                onPressed: () {
-                  // do something
-                },
-              )
-            ],
           ),
-          body: StudyListScreen(),
+          actions: <Widget>[
+            IconButton(
+              iconSize: 30,
+              icon: Icon(
+                Icons.notifications_none,
+                color: Colors.grey[400],
+              ),
+              onPressed: () {
+                // do something
+              },
+            )
+          ],
         ),
+        body: StudyListScreen(),
+      ),
     );
   }
 }
@@ -64,7 +64,10 @@ class _StudyListScreenState extends State<StudyListScreen> {
                   itemCount: state.studyList.length,
                   itemBuilder: (context, index) {
                     return state.studyList[index].status == 'Active'
-                        ? InkWell(child: buildStudyItem(state, index),onTap: () {},)
+                        ? InkWell(
+                            child: buildStudyItem(state, index),
+                            onTap: () {},
+                          )
                         : Container();
                   }),
             );
@@ -84,6 +87,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
   }
 }
 
+// For generate the study Items
 Padding buildStudyItem(StudyListLoadSuccess state, int index) {
   return Padding(
     padding: const EdgeInsets.all(4.0),
@@ -94,8 +98,11 @@ Padding buildStudyItem(StudyListLoadSuccess state, int index) {
           children: [
             Container(
               width: 80.0,
-              child: Image.network('${state.studyList[index].logo},',
-                  height: 80, fit: BoxFit.fill),
+              child: state.studyList[index].logo.contains("html")
+                  ? Image.asset('images/notfound.png',
+                      height: 80, fit: BoxFit.fill)
+                  : Image.network('${state.studyList[index].logo},',
+                      height: 80, fit: BoxFit.fill),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +115,7 @@ Padding buildStudyItem(StudyListLoadSuccess state, int index) {
                           width: 15.0,
                           height: 15.0,
                           decoration: new BoxDecoration(
-                            color: Colors.red[900],
+                            color: Colors.pink[900],
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -121,7 +128,7 @@ Padding buildStudyItem(StudyListLoadSuccess state, int index) {
                         padding: EdgeInsets.fromLTRB(10, 0, 0, 2.0),
                         child: Text("Yet To Join",
                             style: TextStyle(
-                                color: Colors.red[900],
+                                color: Colors.pink[900],
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold))),
                   ],
@@ -163,7 +170,7 @@ Padding buildStudyItem(StudyListLoadSuccess state, int index) {
                           TextSpan(
                             text: ' 0%',
                             style: TextStyle(
-                                color: Colors.red[900],
+                                color: Colors.pink[900],
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold),
                           )
@@ -182,6 +189,7 @@ Padding buildStudyItem(StudyListLoadSuccess state, int index) {
   );
 }
 
+// For Sticky footer at the bottom
 Padding FixedFooter() {
   return Padding(
     padding: EdgeInsets.all(2.0),
@@ -221,8 +229,9 @@ Padding FixedFooter() {
                   ),
                 ),
                 Divider(
+                  color: Colors.pink[900],
                   height: 12,
-                  thickness: 2,
+                  thickness: 1,
                   endIndent: 30,
                   indent: 30,
                 ),
@@ -232,6 +241,10 @@ Padding FixedFooter() {
                     overflow: TextOverflow.clip,
                     softWrap: true,
                     textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
                 SizedBox(

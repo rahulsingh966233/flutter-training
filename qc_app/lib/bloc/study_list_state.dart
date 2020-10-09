@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:qcapp/model/study_modal.dart';
 
@@ -11,7 +10,6 @@ abstract class StudyState extends Equatable {
 
 class StudyListLoadInProgress extends StudyState {}
 
-//TransactionLoadSuccess
 class StudyListLoadSuccess extends StudyState {
   final List<Study> studyList;
 

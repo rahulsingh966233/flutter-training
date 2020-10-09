@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qcapp/api/welcome_screen_data.dart';
-import 'package:qcapp/widget/studyList.dart';
+import 'package:qcapp/widget/study_list.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreen extends State<WelcomeScreen> {
-  PageController pageController;
+  final pageController = new PageController();
 
   void onNextTap(int index) {
     pageController.animateToPage(index,
@@ -39,11 +39,11 @@ class _WelcomeScreen extends State<WelcomeScreen> {
               bodyText2: TextStyle(fontSize: 14.0, color: Colors.black))),
       home: Scaffold(
         body: PageView.builder(
+          controller: pageController,
           itemCount: totalPage,
           itemBuilder: (BuildContext context, int index) {
             LandingScreenItem li =
                 LandingScreenItems.loadLandingScreenItem()[index];
-
             return Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -70,65 +70,52 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                       )
                     ],
                   ),
-                  index == totalPage - 1
-                      ? Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.green[500],
+                  Container(
+                    height: 12.0,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: totalPage,
+                      itemBuilder: (BuildContext context, int i) {
+                        return Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: index == i ? Colors.green : Colors.grey,
+                                shape: BoxShape.circle),
+                            width: 20.0,
                           ),
-                          width: double.infinity,
-                          height: 50.0,
-                          child: RaisedButton(
-                            child: Text(
-                              "Sign Up",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
-                            ),
-                            highlightColor: Colors.green[500],
-                            color: Colors.green,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => StudyList()),
-                              );
-                            },
-                          ),
-                        )
-                      : Container(
-                          height: 12.0,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: totalPage,
-                            itemBuilder: (BuildContext context, int i) {
-                              return Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: index == i
-                                          ? Colors.green
-                                          : Colors.grey,
-                                      shape: BoxShape.circle),
-                                  width: 20.0,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                        );
+                      },
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
-                      onNextTap(index + 1);
+                      index == totalPage - 1
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => StudyList()),
+                            )
+                          : onNextTap(index + 1);
                     },
                     child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.green[500],
-                      ),
+                      decoration: index == totalPage - 1
+                          ? BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.green[500],
+                            )
+                          : BoxDecoration(
+                              border: Border.all(color: Colors.green),
+                              borderRadius: BorderRadius.circular(20.0)),
                       child: Center(
                           child: Text(
-                        "Sign Up",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        index == totalPage - 1 ? "Sign Up" : "Next",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: index == totalPage - 1
+                                ? Colors.white
+                                : Colors.black),
                       )),
                       width: double.infinity,
                       height: 50.0,

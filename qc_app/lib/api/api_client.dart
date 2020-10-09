@@ -10,22 +10,23 @@ class ApiClient {
 
   ApiClient({
     http.Client httpClient,
-    this.baseUrl = "https://sandbox.quantifiedcitizen.com/metadata/studyList",
+    this.baseUrl,
     this.token =
         "Y29tLnF1YW50aWZpZWRjaXRpemVuLnN0YWdpbmctY2EuZXh0ZXJuYWw6YWJjMTIz",
   }) : this.httpClient = httpClient ?? http.Client();
 
   Stream<List<Study>> fetchStudyList() async* {
-    print("Helo");
-    print(this.token);
-    final response = await httpClient.get(Uri.encodeFull('${this.baseUrl}'), headers: {
+    final response =
+        await httpClient.get(Uri.encodeFull('${this.baseUrl}'), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
-      "Authorization":  "Basic ${this.token}"
+      "Authorization": "Basic ${this.token}"
     });
-    print("Data =>, ${response.body}");
+
     Map<String, dynamic> map = json.decode(response.body);
     List<dynamic> results = map["studies"];
+
+    // Mapping array of results
     yield results
         .map((dynamic item) => Study.fromEntity(
             StudyEntity.fromJson(item as Map<String, dynamic>)))

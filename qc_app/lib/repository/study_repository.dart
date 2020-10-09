@@ -1,27 +1,15 @@
 import 'package:qcapp/api/api_client.dart';
 import 'package:qcapp/model/study_modal.dart';
 
-
-
-
-
-
-
-
-
-
-
-
-
-class StudyRepository{
-
+class StudyRepository {
   ApiClient apiClient;
 
-  StudyRepository(){
-    this.apiClient = ApiClient(baseUrl: "https://sandbox.quantifiedcitizen.com/metadata/studyList");
+  StudyRepository() {
+    this.apiClient = ApiClient(
+        baseUrl: "https://sandbox.quantifiedcitizen.com/metadata/studyList");
   }
 
   Stream<List<Study>> loadStudyList() async* {
-      yield* apiClient.fetchStudyList();
+    yield* apiClient.fetchStudyList();
   }
 }
