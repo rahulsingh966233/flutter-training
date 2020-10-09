@@ -161,7 +161,7 @@ Padding buildStudyItem(StudyListLoadSuccess state, int index) {
                   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: RichText(
                     text: TextSpan(
-                        text: 'COMEPLETION:',
+                        text: 'COMPLETION:',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,

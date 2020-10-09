@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:qcapp/model/study_modal.dart';
+import 'package:qcapp/model/study_model.dart';
 
 abstract class StudyState extends Equatable {
   const  StudyState();

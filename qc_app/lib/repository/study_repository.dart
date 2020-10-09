@@ -1,5 +1,5 @@
 import 'package:qcapp/api/api_client.dart';
-import 'package:qcapp/model/study_modal.dart';
+import 'package:qcapp/model/study_model.dart';
 
 class StudyRepository {
   ApiClient apiClient;

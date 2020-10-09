@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:qcapp/entity/study_entity.dart';
-import '../model/study_modal.dart';
+import '../model/study_model.dart';
 
 class ApiClient {
   String baseUrl;
