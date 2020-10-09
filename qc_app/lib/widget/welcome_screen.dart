@@ -31,7 +31,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
               headline1: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
-                  fontSize: 25.0),
+                  fontSize: 22.0),
               headline5: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
@@ -66,16 +66,25 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                                 child: Image.asset(li.image, fit: BoxFit.cover,)),
                             Column(
                               children: <Widget>[
-                                Text(
-                                  li.title,
-                                  style: Theme.of(context).textTheme.headline1,
+                                Center(
+                                  child: Text(
+                                    li.title,
+                                    textAlign:TextAlign.center,
+                                    style: Theme.of(context).textTheme.headline1,
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 20.0,
                                 ),
-                                Text(
-                                  li.subTitle,
-                                  style: Theme.of(context).textTheme.headline5,
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(7.0, 0, 7.0, 0),
+                                  child: Center(
+                                    child: Text(
+                                      "${li.subTitle}",
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context).textTheme.headline5,
+                                    ),
+                                  ),
                                 ),
 
                               ],
