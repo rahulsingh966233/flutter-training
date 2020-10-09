@@ -25,7 +25,6 @@ class StudyBloc extends Bloc<StudyEvent, StudyState> {
     }
   }
 
-//  For Loading the study list
   Stream<StudyState> _mapLoadStudyListState() async* {
     _studySubscription?.cancel();
     _studySubscription = studyRepository.loadStudyList().listen(
@@ -33,12 +32,10 @@ class StudyBloc extends Bloc<StudyEvent, StudyState> {
         );
   }
 
-//  For updating the study list after being load
   Stream<StudyState> _mapUpdateStudyListState(UpdateStudyList event) async* {
     yield StudyListLoadSuccess(event.studyList);
   }
 
-//  For cancelling the subscription
   @override
   Future<void> close() {
     _studySubscription?.cancel();

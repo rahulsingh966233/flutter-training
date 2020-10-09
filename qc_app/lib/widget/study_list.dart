@@ -12,36 +12,34 @@ class StudyList extends StatefulWidget {
 class _StudyListState extends State<StudyList> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomSheet: FixedFooter(),
-        drawer: new Drawer(),
-        appBar: AppBar(
-          elevation: 0.0,
-          iconTheme: new IconThemeData(color: Colors.grey[500]),
-          backgroundColor: Colors.white,
-          title: Center(
-            child: Text(
-              'Studies',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
+    return Scaffold(
+      drawer: new Drawer(),
+      appBar: AppBar(
+        elevation: 0.0,
+        iconTheme: new IconThemeData(color: Colors.grey[500]),
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Text(
+            'Studies',
+            style:
+                TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          actions: <Widget>[
-            IconButton(
-              iconSize: 30,
-              icon: Icon(
-                Icons.notifications_none,
-                color: Colors.grey[400],
-              ),
-              onPressed: () {
-                // do something
-              },
-            )
-          ],
         ),
-        body: StudyListScreen(),
+        actions: <Widget>[
+          IconButton(
+            iconSize: 30,
+            icon: Icon(
+              Icons.notifications_none,
+              color: Colors.grey[400],
+            ),
+            onPressed: () {
+              // do something
+            },
+          )
+        ],
       ),
+      body: StudyListScreen(),
+      bottomSheet: FixedFooter(),
     );
   }
 }
@@ -65,9 +63,9 @@ class _StudyListScreenState extends State<StudyListScreen> {
                   itemBuilder: (context, index) {
                     return state.studyList[index].status == 'Active'
                         ? InkWell(
-                            child: buildStudyItem(state, index),
-                            onTap: () {},
-                          )
+                      child: buildStudyItem(state, index),
+                      onTap: () {},
+                    )
                         : Container();
                   }),
             );
@@ -90,7 +88,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
 // For generate the study Items
 Padding buildStudyItem(StudyListLoadSuccess state, int index) {
   return Padding(
-    padding: const EdgeInsets.all(4.0),
+    padding: EdgeInsets.all(4.0),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[

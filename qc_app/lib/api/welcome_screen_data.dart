@@ -20,16 +20,16 @@ class LandingScreenItems {
         color: Colors.white,
       ),
       LandingScreenItem(
-        title: "Find out more about yourself (while Contributing to science",
+        title: "Find out more about yourself (while Contributing to science)",
         subTitle:
-            "What are ou interested in learning more about? Join an array if studies, related to health and wellbeing.",
+            "What are ou interested in learning more about? Join an array if studies, related to health and well being.",
         image: "images/qc2.png",
         color: Colors.white,
       ),
       LandingScreenItem(
         title: "Validate research methods",
         subTitle:
-            "We use study methods traditionally used in in-person clinical setting and bring it ti th comfort of your home.",
+            "We use study methods traditionally used in in-person clinical setting and bring it to the comfort of your home.",
         image: "images/qc4.png",
         color: Colors.white,
       ),

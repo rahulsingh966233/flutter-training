@@ -6,18 +6,28 @@ import 'package:qcapp/repository/study_repository.dart';
 import 'package:qcapp/widget/welcome_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<StudyBloc>(
+        create: (context) {
+          return StudyBloc(
+            studyRepository: StudyRepository(),
+          )..add(LoadStudyList());
+        },
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'QC app',
+      color: Colors.white,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Home'),
@@ -37,17 +47,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<StudyBloc>(
-          create: (context) {
-            return StudyBloc(
-              studyRepository: StudyRepository(),
-            )..add(LoadStudyList());
-          },
-        ),
-      ],
-      child: WelcomeScreen(),
-    );
+    return WelcomeScreen();
   }
 }
